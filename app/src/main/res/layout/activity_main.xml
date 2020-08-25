@@ -32,8 +32,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
-        android:layout_width="336dp"
-        android:layout_height="261dp"
+        android:layout_width="354dp"
+        android:layout_height="245dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
@@ -50,7 +50,7 @@
             android:autofillHints=""
             android:background="@drawable/shadow"
             android:drawableStart="@drawable/ic_baseline_email_24"
-            android:drawablePadding="20sp"
+            android:drawablePadding="10sp"
             android:elevation="10sp"
             android:ems="10"
             android:gravity="start|center_vertical"
@@ -93,7 +93,7 @@
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="333dp"
+            android:layout_width="347dp"
             android:layout_height="55dp"
             android:layout_weight="0"
             android:background="@drawable/button_shape"
