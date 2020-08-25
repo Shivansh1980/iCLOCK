@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "41314636393",
+    "firebase_url": "https://iclock-5fe6f.firebaseio.com",
+    "project_id": "iclock-5fe6f",
+    "storage_bucket": "iclock-5fe6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41314636393:android:7bba62bcec9f33fd5388f8",
+        "android_client_info": {
+          "package_name": "com.example.iclock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41314636393-ogi58g2vejbq5b1fisrqrkn8slehf8e9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy2JnQnFmxA_OswBNOz6nluD4C6-MxELo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41314636393-ogi58g2vejbq5b1fisrqrkn8slehf8e9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

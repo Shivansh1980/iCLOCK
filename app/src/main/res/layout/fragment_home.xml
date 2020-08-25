@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragement"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDE5E5"
+    android:padding="10sp"
+    tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="264dp"
+        android:layout_height="219dp"
+        android:background="@drawable/shadow"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.144">
+
+        <ImageButton
+            android:id="@+id/event_img_button"
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            android:layout_weight="8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/event_icon"
+            android:contentDescription="@string/todo" />
+
+        <Button
+            android:id="@+id/event_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/events" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="266dp"
+        android:layout_height="216dp"
+        android:background="@drawable/shadow"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.214">
+
+        <ImageButton
+            android:id="@+id/sharing_img_button"
+            android:layout_width="match_parent"
+            android:layout_height="158dp"
+            android:layout_weight="8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sharing_icon"
+            android:contentDescription="@string/todo" />
+
+        <Button
+            android:id="@+id/sharing_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sharing" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
