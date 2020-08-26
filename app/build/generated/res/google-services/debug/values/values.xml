@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">41314636393-ogi58g2vejbq5b1fisrqrkn8slehf8e9.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://iclock-5fe6f.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">41314636393</string>
+    <string name="google_api_key" translatable="false">AIzaSyBy2JnQnFmxA_OswBNOz6nluD4C6-MxELo</string>
+    <string name="google_app_id" translatable="false">1:41314636393:android:7bba62bcec9f33fd5388f8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBy2JnQnFmxA_OswBNOz6nluD4C6-MxELo</string>
+    <string name="google_storage_bucket" translatable="false">iclock-5fe6f.appspot.com</string>
+    <string name="project_id" translatable="false">iclock-5fe6f</string>
+</resources>
