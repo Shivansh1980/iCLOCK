@@ -120,8 +120,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("SignInActivity", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            openDashboard();
-
+                            //openDashboard();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("SignInActivity", "signInWithCredential:failure", task.getException());
@@ -131,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void openDashboard(){
-        Intent intent = new Intent(this,DashboardActivity.class);
-        startActivity(intent);
-    }
+    //private void openDashboard(){
+    //    Intent intent = new Intent(this,DashboardActivity.class);
+    //    startActivity(intent);
+    //}
 }
