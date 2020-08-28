@@ -11,7 +11,7 @@
 9-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:5:5-23:19
+11-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:5:5-28:19
 12        android:allowBackup="true"
 12-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -25,123 +25,133 @@
 17-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:9:9-54
 18        android:supportsRtl="true"
 18-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:10:9-35
-19        android:theme="@style/AppTheme" >
-19-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:11:9-40
-20        <activity android:name="com.example.iclock.MainActivity" >
-20-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:12:9-18:20
-20-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:12:19-47
-21            <intent-filter>
-21-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:13:13-17:29
-22                <action android:name="android.intent.action.MAIN" />
-22-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:14:17-69
-22-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:14:25-66
-23
-24                <category android:name="android.intent.category.LAUNCHER" />
-24-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:16:17-77
-24-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:16:27-74
-25            </intent-filter>
-26        </activity>
-27
-28        <meta-data
-28-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:20:9-22:57
-29            android:name="preloaded_fonts"
-29-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:21:13-43
-30            android:resource="@array/preloaded_fonts" />
-30-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:22:13-54
-31
-32        <activity
-32-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:24:9-31:50
-33            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-33-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:25:13-85
-34            android:excludeFromRecents="true"
-34-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:26:13-46
-35            android:exported="true"
-35-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:27:13-36
-36            android:launchMode="singleTask"
-36-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:28:13-44
-37            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-37-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:29:13-102
-38            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-38-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:30:13-72
-39
-40        <service
-40-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:33:9-39:19
-41            android:name="com.google.firebase.components.ComponentDiscoveryService"
-41-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:34:13-84
-42            android:directBootAware="true"
-42-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
-43            android:exported="false" >
-43-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:35:13-37
-44            <meta-data
-44-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:36:13-38:85
-45                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-45-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:37:17-109
-46                android:value="com.google.firebase.components.ComponentRegistrar" />
-46-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:38:17-82
-47        </service>
-48
-49        <activity
-49-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:23:9-27:75
-50            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-50-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:24:13-93
-51            android:excludeFromRecents="true"
-51-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:25:13-46
-52            android:exported="false"
-52-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:26:13-37
-53            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-53-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:27:13-72
-54        <!--
-55            Service handling Google Sign-In user revocation. For apps that do not integrate with
-56            Google Sign-In, this service will never be started.
-57        -->
-58        <service
-58-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:33:9-37:51
-59            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-59-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:34:13-89
-60            android:exported="true"
-60-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:35:13-36
-61            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-61-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:36:13-107
-62            android:visibleToInstantApps="true" />
-62-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:37:13-48
-63
-64        <activity
-64-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
-65            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-65-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
-66            android:exported="false"
-66-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
-67            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-67-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
-68
-69        <provider
-69-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
-70            android:name="com.google.firebase.provider.FirebaseInitProvider"
-70-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
-71            android:authorities="com.example.iclock.firebaseinitprovider"
-71-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+19        android:testOnly="true"
+20        android:theme="@style/AppTheme" >
+20-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:11:9-40
+21        <activity
+21-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:12:9-16:20
+22            android:name="com.example.iclock.DashboardActivity"
+22-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:13:13-46
+23            android:label="@string/title_activity_dashboard"
+23-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:14:13-61
+24            android:theme="@style/AppTheme.NoActionBar" >
+24-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:15:13-56
+25        </activity>
+26        <activity android:name="com.example.iclock.MainActivity" >
+26-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:17:9-23:20
+26-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:17:19-47
+27            <intent-filter>
+27-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:18:13-22:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:19:17-69
+28-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:19:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:21:17-77
+30-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:21:27-74
+31            </intent-filter>
+32        </activity>
+33
+34        <meta-data
+34-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:25:9-27:57
+35            android:name="preloaded_fonts"
+35-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:26:13-43
+36            android:resource="@array/preloaded_fonts" />
+36-->C:\Users\ASUS\AndroidStudioProjects\iCLOCK\app\src\main\AndroidManifest.xml:27:13-54
+37
+38        <activity
+38-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:24:9-31:50
+39            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+39-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:25:13-85
+40            android:excludeFromRecents="true"
+40-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:26:13-46
+41            android:exported="true"
+41-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:27:13-36
+42            android:launchMode="singleTask"
+42-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:28:13-44
+43            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+43-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:29:13-102
+44            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+44-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:30:13-72
+45
+46        <service
+46-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:33:9-39:19
+47            android:name="com.google.firebase.components.ComponentDiscoveryService"
+47-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:34:13-84
+48            android:directBootAware="true"
+48-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+49            android:exported="false" >
+49-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:35:13-37
+50            <meta-data
+50-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:36:13-38:85
+51                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+51-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:37:17-109
+52                android:value="com.google.firebase.components.ComponentRegistrar" />
+52-->[com.google.firebase:firebase-auth:19.3.2] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\16a303518ddb9c4f6d04d81a3a04d0b3\jetified-firebase-auth-19.3.2\AndroidManifest.xml:38:17-82
+53        </service>
+54
+55        <activity
+55-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:23:9-27:75
+56            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+56-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:24:13-93
+57            android:excludeFromRecents="true"
+57-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:25:13-46
+58            android:exported="false"
+58-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:26:13-37
+59            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+59-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:27:13-72
+60        <!--
+61            Service handling Google Sign-In user revocation. For apps that do not integrate with
+62            Google Sign-In, this service will never be started.
+63        -->
+64        <service
+64-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:33:9-37:51
+65            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+65-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:34:13-89
+66            android:exported="true"
+66-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:35:13-36
+67            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+67-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:36:13-107
+68            android:visibleToInstantApps="true" />
+68-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\bc0e002cee3c62e9d228887e35f0b209\jetified-play-services-auth-18.1.0\AndroidManifest.xml:37:13-48
+69
+70        <activity
+70-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+71            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+71-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
 72            android:exported="false"
-72-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
-73            android:initOrder="100" />
-73-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+72-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+73            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+73-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
 74
-75        <meta-data
-75-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\5eb669ce5a805bc6842a7cd8fb336c21\jetified-play-services-basement-17.1.1\AndroidManifest.xml:23:9-25:69
-76            android:name="com.google.android.gms.version"
-76-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\5eb669ce5a805bc6842a7cd8fb336c21\jetified-play-services-basement-17.1.1\AndroidManifest.xml:24:13-58
-77            android:value="@integer/google_play_services_version" />
-77-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\5eb669ce5a805bc6842a7cd8fb336c21\jetified-play-services-basement-17.1.1\AndroidManifest.xml:25:13-66
-78
-79        <provider
-79-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-80            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-80-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-81            android:authorities="com.example.iclock.lifecycle-process"
-81-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-82            android:exported="false"
-82-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-83            android:multiprocess="true" />
-83-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-84    </application>
-85
-86</manifest>
+75        <provider
+75-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+76            android:name="com.google.firebase.provider.FirebaseInitProvider"
+76-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+77            android:authorities="com.example.iclock.firebaseinitprovider"
+77-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+78            android:exported="false"
+78-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+79            android:initOrder="100" />
+79-->[com.google.firebase:firebase-common:19.3.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+80
+81        <meta-data
+81-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\5eb669ce5a805bc6842a7cd8fb336c21\jetified-play-services-basement-17.1.1\AndroidManifest.xml:23:9-25:69
+82            android:name="com.google.android.gms.version"
+82-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\5eb669ce5a805bc6842a7cd8fb336c21\jetified-play-services-basement-17.1.1\AndroidManifest.xml:24:13-58
+83            android:value="@integer/google_play_services_version" />
+83-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\5eb669ce5a805bc6842a7cd8fb336c21\jetified-play-services-basement-17.1.1\AndroidManifest.xml:25:13-66
+84
+85        <provider
+85-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+86            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+86-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+87            android:authorities="com.example.iclock.lifecycle-process"
+87-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+88            android:exported="false"
+88-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+89            android:multiprocess="true" />
+89-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ASUS\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+90    </application>
+91
+92</manifest>

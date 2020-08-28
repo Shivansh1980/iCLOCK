@@ -1,13 +1,19 @@
 package com.example.iclock;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -31,7 +37,10 @@ import static java.lang.Thread.sleep;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private GoogleSignInClient googleSignInClient;
+    final String Tag = "SignInIntent";
     private static int RC_SIGN_IN = 120;    //varriable which google checks with requestCode if it matches or not, ignore this also
+    private Button signup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
         //finding layout to animate by using the animations available in java
         ConstraintLayout username_pass_layout = findViewById(R.id.constraint_layout);
         TextView text = findViewById(R.id.iclock_text);
-        Button signin_button = findViewById(R.id.login_button);
+        Button login_button = findViewById(R.id.login_button);
         SignInButton signin_google = findViewById(R.id.signInButton);
         TextView orLoginWith = findViewById(R.id.or_login_with);
 
         //Animating the layouts by using the setanimation method available in java
         username_pass_layout.setAnimation(bottom_animation);
         text.setAnimation(top_animation);
-        signin_button.setAnimation(scale_animation);
+        login_button.setAnimation(scale_animation);
         signin_google.setAnimation(bottom_animation);
         orLoginWith.setAnimation(scale_animation);
         signin_google.setOnClickListener(new View.OnClickListener() {
@@ -71,14 +80,56 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //username and password edit text from user
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText user_input = (EditText) findViewById(R.id.username);
+                EditText pass_input = (EditText) findViewById(R.id.password);
+                String username = user_input.getText().toString();
+                String password = pass_input.getText().toString();
+                Log.d("SignInActivity","Username and Password = "+username+" "+password);
+                if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+                    if(password.length()<6){
+                        Toast.makeText(MainActivity.this, "Password Length Too Short", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(!isValidEmail(username)) {
+                        Toast.makeText(MainActivity.this, "Please Enter Valid Email Address", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        AuthenticateUserAndOpenDashboard(username,password);
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Username or Password Invalid", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        //Dheeraj right your signup Code  here, on clicking signup button activity or new fragment should open which take input of registration, leave the backend code on me.
+        //and if you want to write backend code then do so. but then create new activity for signup page.
+        signup = findViewById(R.id.sign_up);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Change This Activity To Your New Activity which contains the signup page.
+            }
+        });
+
     }
+
+
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
+        if(currentUser != null)
+            openDashboard();
+        else return;
     }
+
     private void signIn() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -120,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("SignInActivity", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //openDashboard();
+                            openDashboard();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("SignInActivity", "signInWithCredential:failure", task.getException());
@@ -130,8 +181,36 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    //private void openDashboard(){
-    //    Intent intent = new Intent(this,DashboardActivity.class);
-    //    startActivity(intent);
-    //}
+
+    //This function is not built-in and has been defined by developers so do not change it, this is taking username and password and authenticating user to dashboard
+    private void AuthenticateUserAndOpenDashboard(String username,String password) {
+
+        mAuth.signInWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("SignInIntent", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            openDashboard();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("SignInIntent", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+
+    }
+    private void openDashboard(){
+        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+        startActivity(intent);
+    }
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
 }
