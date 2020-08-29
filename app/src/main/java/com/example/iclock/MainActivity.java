@@ -47,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Logging In");
-        progressDialog.setMessage("Please Wait Loading...");
 
+        //Ignore all below things you can just press ctrl+f and type in the searchbox "Dheeraj" and then just below the comment which you searched you get
+        //there signup onclicklistener you need to create a new activity or fragment which should be opened when user click that on signup button and
+        //later on you can design that acitvity or fragmemnt by yourself.
+
+        //if you want from me to setup things for you then tell me. I will setup and then you will just need to design page.
+
+        progressDialog = new ProgressDialog(this);
         //Getting Firebase Authentication Instance to create new users as well as for login , awesome right?
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -93,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setTitle("Logging In");
+                progressDialog.setMessage("Please Wait Loading...");
                 progressDialog.show();
                 EditText user_input = (EditText) findViewById(R.id.username);
                 EditText pass_input = (EditText) findViewById(R.id.password);
@@ -117,12 +123,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Dheeraj right your signup Code  here, on clicking signup button activity or new fragment should open which take input of registration, leave the backend code on me.
-        //and if you want to write backend code then do so. but then create new activity for signup page.
+        //and if you want to write backend code then do so.
         signup = findViewById(R.id.sign_up);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Change This Activity To Your New Activity which contains the signup page.
+                //1.Change this Activity To Your New Activity which contains the signup page.
+                //2.And in you new Activity, There you will startActivity(DashboardActivity) after user done with signup
+                //or you leave after creating page i will do so.
+
             }
         });
 
@@ -142,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null) {
+            progressDialog.setTitle("Logging In");
+            progressDialog.setMessage("Please Wait Loading...");
             progressDialog.show();
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -155,10 +166,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signIn() {
+        progressDialog.setTitle("Logging In");
+        progressDialog.setMessage("Please Wait Loading...");
         progressDialog.show();
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
