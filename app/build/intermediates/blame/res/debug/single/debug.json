@@ -20,52 +20,20 @@
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\anim_scale_animation.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\anim\\scale_animation.xml"
-    },
-    {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_card_shadow.xml.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\card_shadow.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main_drawer.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background_main.jpg.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\background_main.jpg"
     },
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
-    },
-    {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_email_24.xml.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\ic_baseline_email_24.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_icon.xml.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\home_icon.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_second.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\fragment_second.xml"
     },
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\anim_top_animation.xml.flat",
@@ -88,14 +56,6 @@
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\gradient.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\menu_dashboard.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\menu\\dashboard.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
@@ -106,10 +66,6 @@
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sharing_icon.png.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\sharing_icon.png"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_plus_icon.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\plus_icon.xml"
     },
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\navigation_nav_graph.xml.flat",
@@ -124,12 +80,80 @@
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_share_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\ic_baseline_share_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_shape.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\button_shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_add_event.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\fragment_add_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_books.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\fragment_books.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_books_list.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\fragment_books_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\anim_scale_animation.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\anim\\scale_animation.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main_drawer.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background_main.jpg.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\background_main.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_event.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\fragment_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\menu_dashboard.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\menu\\dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_plus_icon.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\plus_icon.xml"
+    },
+    {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shadow.xml.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\shadow.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_share_24.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\ic_baseline_share_24.xml"
+        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_dashboard.xml.flat",
+        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
     },
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_event_note_24.xml.flat",
@@ -138,10 +162,6 @@
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\font_alfa_slab_one.xml.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\font\\alfa_slab_one.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_shape.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\button_shape.xml"
     },
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\anim_bottom_animation.xml.flat",
@@ -164,16 +184,8 @@
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sharing_icon_2.png.flat",
         "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\drawable\\sharing_icon_2.png"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_dashboard.xml.flat",
-        "source": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\src\\main\\res\\layout\\content_dashboard.xml"
     },
     {
         "merged": "C:\\Users\\ASUS\\AndroidStudioProjects\\iCLOCK\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_person_24.xml.flat",

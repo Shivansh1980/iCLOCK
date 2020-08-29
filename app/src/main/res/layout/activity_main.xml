@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.465">
+        app:layout_constraintVertical_bias="0.499">
 
         <EditText
             android:id="@+id/username"
@@ -148,7 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="New User?"
+        android:text="@string/new_user"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="normal"
@@ -166,7 +166,7 @@
         android:background="@null"
         android:fontFamily="@font/aclonica"
         android:paddingLeft="5sp"
-        android:text="signup"
+        android:text="@string/sign_up"
         android:textAlignment="viewStart"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"

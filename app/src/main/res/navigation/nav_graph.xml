@@ -4,29 +4,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment"
-    tools:ignore="UnusedNavigation">
+    app:startDestination="@id/dashboardFragment">
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.iclock.HomeFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/content_dashboard">
-
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.iclock.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_dashboardFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment"
+            app:enterAnim="@anim/rotate_animation" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_eventFragment"
+            app:destination="@id/eventFragment"
+            app:enterAnim="@anim/scale_animation" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_booksFragment"
+            app:destination="@id/booksFragment"
+            app:enterAnim="@anim/scale_animation" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.iclock.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment2"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        android:id="@+id/addEventFragment"
+        android:name="com.example.iclock.AddEventFragment"
+        android:label="Add Event"
+        tools:layout="@layout/fragment_add_event" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.iclock.EventFragment"
+        android:label="Events"
+        tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.example.iclock.BooksFragment"
+        android:label="Books"
+        tools:layout="@layout/fragment_books_list" />
 </navigation>

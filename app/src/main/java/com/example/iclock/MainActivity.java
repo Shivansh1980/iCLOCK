@@ -3,6 +3,7 @@ package com.example.iclock;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -40,17 +41,22 @@ public class MainActivity extends AppCompatActivity {
     final String Tag = "SignInIntent";
     private static int RC_SIGN_IN = 120;    //varriable which google checks with requestCode if it matches or not, ignore this also
     private Button signup;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Logging In");
+        progressDialog.setMessage("Please Wait Loading...");
 
         //Getting Firebase Authentication Instance to create new users as well as for login , awesome right?
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
         googleSignInClient = GoogleSignIn.getClient(this,gso);
         mAuth = FirebaseAuth.getInstance();
 
@@ -73,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         login_button.setAnimation(scale_animation);
         signin_google.setAnimation(bottom_animation);
         orLoginWith.setAnimation(scale_animation);
+
+
         signin_google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 EditText user_input = (EditText) findViewById(R.id.username);
                 EditText pass_input = (EditText) findViewById(R.id.password);
                 String username = user_input.getText().toString();
@@ -119,18 +128,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void takeabreak(){
+        try {
+            sleep(1500);
+        }catch (Exception e) {
+            Toast.makeText(this, "Failed To Wait", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null)
-            openDashboard();
+        if(currentUser != null) {
+            progressDialog.show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.dismiss();
+                    openDashboard();
+                }
+            },2500);
+        }
         else return;
     }
 
     private void signIn() {
+        progressDialog.show();
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -171,7 +196,14 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("SignInActivity", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            openDashboard();
+                            takeabreak();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    openDashboard();
+                                }
+                            },1500);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("SignInActivity", "signInWithCredential:failure", task.getException());
@@ -193,7 +225,13 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("SignInIntent", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            openDashboard();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    openDashboard();
+                                }
+                            },2000);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("SignInIntent", "signInWithEmail:failure", task.getException());
