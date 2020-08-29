@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         //Ignore all below things you can just press ctrl+f and type in the searchbox "Dheeraj" and then just below the comment which you searched you get
         //there signup onclicklistener you need to create a new activity or fragment which should be opened when user click that on signup button and
         //later on you can design that acitvity or fragmemnt by yourself.
-
         //if you want from me to setup things for you then tell me. I will setup and then you will just need to design page.
 
         progressDialog = new ProgressDialog(this);
