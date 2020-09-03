@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.iclock.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment"
+            app:enterAnim="@anim/scale_animation" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_booksFragment"
+            app:destination="@id/booksFragment"
+            app:enterAnim="@anim/scale_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.iclock.AddEventFragment"
+        android:label="Add Events"
+        tools:layout="@layout/fragment_add_event" />
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.example.iclock.BooksFragment"
+        android:label="Books"
+        tools:layout="@layout/fragment_books_list" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.iclock.EventFragment"
+        android:label="Events"
+        tools:layout="@layout/fragment_event" />
+</navigation>
