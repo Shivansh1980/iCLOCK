@@ -146,17 +146,17 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null) {
-            progressDialog.show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    progressDialog.dismiss();
-                    openDashboard();
-                }
-            },2500);
-        }
-        else return;
+//        if(currentUser != null) {
+//            progressDialog.show();
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    progressDialog.dismiss();
+//                    openDashboard();
+//                }
+//            },2500);
+//        }
+//        else return;
     }
 
     private void signIn() {
