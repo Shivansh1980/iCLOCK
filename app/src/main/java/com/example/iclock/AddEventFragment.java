@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,6 +43,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 public class AddEventFragment extends Fragment {
 
@@ -52,7 +55,7 @@ public class AddEventFragment extends Fragment {
     EditText contact_number;
     EditText certification;
     EditText optional_details;
-
+    public static final String TAG="CheckForDatabase";
     private CreateUserEvent createUserEvent;
     private static final int PICK_IMAGE_REQUEST = 1;
     private FirebaseAuth mAuth;
@@ -107,7 +110,8 @@ public class AddEventFragment extends Fragment {
 
         //storage references and creating the directories in firebase using below two lines
         storageReference = FirebaseStorage.getInstance().getReference("Events_Details");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Events_Details");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,17 +174,26 @@ public class AddEventFragment extends Fragment {
 //                            String url_of_image = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 //                            Upload upload = new Upload(name_of_event, url_of_image);
 
-                            String uploadId = databaseReference.push().getKey();
+
 
                             //Now you just need to get the url of the image that you have uploaded.
-                            //just byheart it because it is very important
 
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
                             createUserEvent.setImageUrl(url);
+
                             //now we will save this object in our database
-                            databaseReference.child(uploadId).setValue(createUserEvent);
+                            String uploadId = databaseReference.push().getKey();
+                            Log.d(TAG, "onSuccess: Going To Save Object To Firebase");
+                            Log.d(TAG, "onSuccess: UPLOAD ID : "+uploadId);
+
+                            databaseReference.child("Events_Details").child(uploadId).setValue(createUserEvent, new DatabaseReference.CompletionListener() {
+                                @Override
+                                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                    Log.d(TAG, "onComplete: Error : "+error+" And reference : "+ref);
+                                }
+                            });
                             progressDialog.dismiss();
 
                             Toast.makeText(context, "Event Created Successfully", Toast.LENGTH_SHORT).show();
@@ -242,11 +255,7 @@ public class AddEventFragment extends Fragment {
         } else if (contact.length() != 10) {
             Toast.makeText(context, "Please Enter Correct Contact Number", Toast.LENGTH_LONG).show();
             return 0;
-        } else if (!validateJavaDate(startDate) || !validateJavaDate(endDate)) {
-            Toast.makeText(context, "Please Enter The Correct Date Formate eg. dd/mm/yyyy", Toast.LENGTH_LONG).show();
-            return 0;
         }
-
         return 1;
     }
 
