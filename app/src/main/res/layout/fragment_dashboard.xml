@@ -34,6 +34,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="408dp"
         android:layout_height="178dp"
         android:background="@android:color/white"
@@ -66,7 +67,7 @@
                 android:background="@android:color/white"
                 android:contentDescription="@string/events_on_college"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/event_icon_3"/>
+                app:srcCompat="@drawable/event_icon_3" />
 
             <TextView
                 android:id="@+id/event_text"
@@ -116,5 +117,30 @@
                 android:textSize="25sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/college_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="college_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.187" />
+
+    <Button
+        android:id="@+id/college_text_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/college_name_text"
+        app:layout_constraintVertical_bias="0.231" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

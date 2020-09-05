@@ -3,6 +3,8 @@ package com.example.iclock;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -50,6 +54,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: drawerlayout created");
         //This will create the message box which you are seeing on the dashboard page of our activity we call it FloatingActionButton.
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

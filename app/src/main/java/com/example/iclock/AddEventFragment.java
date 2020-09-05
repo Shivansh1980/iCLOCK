@@ -19,11 +19,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -36,12 +35,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
@@ -150,33 +147,32 @@ public class AddEventFragment extends Fragment {
 
     private void uploadUserInformationToDatabase() {
         progressDialog.show();
+
         if (image_uri != null) {
 
             //this will create a big_number.jpg and when we call .child this means we are
             //going to add something inside Events_Images Directory
             StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(image_uri));
-
             //now we will store our image file in firebase and check for success and failure events
             //And we store the refrence of current process in this uploadtask varriable which helps us
             //when user clicks on upload button multiple time, so when he clicks one time uploadTask will
             //take  the reference and when the upload runnig and the user clicks the upload button another
-            //time then we put a check if uploadTask is null or not. it is null then this means no task is
+            //time then we put a check if uploadTask is null or not.if it is null then this means no task is
             //running else we don't upload. This check you put above in upload onlicklisterner.
-
+            Toast.makeText(context, "Going to upload the image", Toast.LENGTH_SHORT).show();
 
             uploadTask = fileReference.putFile(image_uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
 //                            lets create the object with name and url of the image and save this object into our database.
 //                            String name_of_event = file_name.getText().toString().trim();
 //                            String url_of_image = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 //                            Upload upload = new Upload(name_of_event, url_of_image);
 
-
-
                             //Now you just need to get the url of the image that you have uploaded.
+                            Log.d(TAG, "onSuccess: Upload Image Successfull");
+                            Toast.makeText(context, "upload image successfull", Toast.LENGTH_SHORT).show();
 
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
@@ -188,25 +184,21 @@ public class AddEventFragment extends Fragment {
                             Log.d(TAG, "onSuccess: Going To Save Object To Firebase");
                             Log.d(TAG, "onSuccess: UPLOAD ID : "+uploadId);
 
-                            databaseReference.child("Events_Details").child(uploadId).setValue(createUserEvent, new DatabaseReference.CompletionListener() {
+                            databaseReference.child("Events_Details").child(uploadId).setValue(createUserEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                    Log.d(TAG, "onComplete: Error : "+error+" And reference : "+ref);
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(context, "Data uploaded successfully", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(context, "Failed to upload data", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
                                 }
                             });
-                            progressDialog.dismiss();
-
-                            Toast.makeText(context, "Event Created Successfully", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
                         }
                     });
-
         } else {
             progressDialog.dismiss();
             Toast.makeText(context, "No File Selected", Toast.LENGTH_SHORT).show();
