@@ -7,27 +7,33 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iclock.dummy.CreateBook;
 import com.example.iclock.dummy.DummyContent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
  */
 public class BooksFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
+    private List<CreateBook>bookList;
+    private Context context;
+    private NavController navController;
 
     public BooksFragment() {
+
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
     public static BooksFragment newInstance(int columnCount) {
         BooksFragment fragment = new BooksFragment();
         Bundle args = new Bundle();
@@ -50,6 +56,18 @@ public class BooksFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_books_list, container, false);
 
+        //getting below things to pass them in our recycler view
+        context = container.getContext();
+        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+
+        bookList = new ArrayList<CreateBook>();
+        CreateBook book = new CreateBook();
+
+        book.setBookName("Introduction to Algorithm");
+        book.setBookDescription("This is the best book to learn algorithm and data structure");
+        book.setBookImageUrl("https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-e1464023124869.jpeg");
+        bookList.add(book);
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -59,7 +77,7 @@ public class BooksFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(bookList,context,navController));
         }
         return view;
     }

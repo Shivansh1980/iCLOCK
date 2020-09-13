@@ -1,6 +1,8 @@
 package com.example.iclock;
 
-public class CreateUserEvent {
+import java.io.Serializable;
+
+public class CreateUserEvent implements Serializable {
     private String eventOwner;
     private String description;
     private String userId;

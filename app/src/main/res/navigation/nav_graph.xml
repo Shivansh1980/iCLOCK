@@ -22,19 +22,51 @@
             app:destination="@id/booksFragment"
             app:enterAnim="@anim/scale_animation" />
     </fragment>
+
     <fragment
         android:id="@+id/addEventFragment"
         android:name="com.example.iclock.AddEventFragment"
         android:label="Add Events"
         tools:layout="@layout/fragment_add_event" />
+
     <fragment
         android:id="@+id/booksFragment"
         android:name="com.example.iclock.BooksFragment"
         android:label="Books"
-        tools:layout="@layout/fragment_books_list" />
+        tools:layout="@layout/fragment_books_list" >
+        <action
+            android:id="@+id/action_booksFragment_to_bookDetails"
+            app:destination="@id/bookDetails"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
+    </fragment>
+
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.example.iclock.EventFragment"
         android:label="Events"
-        tools:layout="@layout/fragment_event" />
+        tools:layout="@layout/fragment_event" >
+
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetails"
+            app:destination="@id/eventDetails"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="event_details"
+            app:argType="com.example.iclock.CreateUserEvent" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetails"
+        android:name="com.example.iclock.EventDetails"
+        android:label="Event Details"
+        tools:layout="@layout/fragment_event_details" />
+    <fragment
+        android:id="@+id/bookDetails"
+        android:name="com.example.iclock.BookDetails"
+        android:label="Book Details"
+        tools:layout="@layout/fragment_book_details" />
+
 </navigation>

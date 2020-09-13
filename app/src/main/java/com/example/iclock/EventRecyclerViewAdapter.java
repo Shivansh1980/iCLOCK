@@ -1,6 +1,9 @@
 package com.example.iclock;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +12,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
-//here myview holder is the subclass of eventrecyclerviewholder which represent the single dataitem in tne
+//here myviewholder is the subclass of eventrecyclerviewholder which represent the single dataitem in the
 //recycler view
 
 public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.MyViewHolder> {
     private Context context;
     private List<CreateUserEvent> userEvents;
+    private NavController navController;
 
-    public EventRecyclerViewAdapter(Context context, List<CreateUserEvent> userEvents) {
+    public EventRecyclerViewAdapter(Context context, List<CreateUserEvent> userEvents, NavController navController) {
         this.userEvents = userEvents;
         this.context = context;
+        this.navController = navController;
     }
 
     //whenever RecyclerView wants the item it first call onCreateViewHolder and this onCreateViewHolder
@@ -47,24 +55,33 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     //position of the view
     @Override
     public void onBindViewHolder(@NonNull EventRecyclerViewAdapter.MyViewHolder holder, int position) {
+        //userEvent is the array of CreateUserEvent Object
+
         final CreateUserEvent createUserEvent = userEvents.get(position);
         if (userEvents.get(position) == null) {
             Toast.makeText(context, "Founds Null Object", Toast.LENGTH_SHORT).show();
             return;
         }
-        holder.eventName.setText("Event Name: ");
+        holder.eventName.setText("Event Name:\n");
         holder.eventName.append(userEvents.get(position).getEventName());
-        holder.startDate.setText("start date: ");
+        holder.startDate.setText("start date:\n");
         holder.startDate.append(userEvents.get(position).getEventStartdate());
-        Picasso.get().load(userEvents.get(position)
-                .getImageUrl())
+
+        Picasso.get().load(
+                    userEvents.get(position).getImageUrl() //userevents.get(position) will give the clicked object by user onclick the card
+                )
                 .fit()
                 .centerCrop()
                 .into(holder.eventImage);
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+
+                holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You have Clicked on " + createUserEvent.getEventName() + " event", Toast.LENGTH_LONG).show();
+                Bundle bundle = new Bundle();
+                //we are able serialize the below CreateUserEvent Class because the class CreateUserEvent implements serializable
+                Log.d("Check Bundle", "onClick: ");
+                bundle.putSerializable("event_details",createUserEvent);
+                navController.navigate(R.id.action_eventFragment_to_eventDetails,bundle);
             }
         });
     }

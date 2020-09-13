@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/event_card_image_back"
+    tools:context=".EventDetails">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="374dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="55sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/event_details_image"
+                android:layout_width="match_parent"
+                android:layout_height="276dp"
+                android:layout_marginLeft="2sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="2sp"
+                android:layout_marginBottom="10sp"
+                android:layout_weight="5"
+                android:src="@drawable/event_card_shadow" />
+
+            <TextView
+                android:id="@+id/event_details_text_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:layout_weight="3"
+                android:background="@drawable/button_shape"
+                android:text="Event Name"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#EF2B08"
+                android:textSize="38sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_details_text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15sp"
+                android:layout_weight="5"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:text="Description :\n"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#800505"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp"
+                android:layout_weight="5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/event_details_registration_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shadow"
+                    android:text="Event Starts On : \n"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/event_details_registration_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shadow"
+                    android:text="Registration Ends:\n"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/event_details_contactno"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginBottom="10sp"
+                android:layout_weight="5"
+                android:background="#81A6E4"
+                android:gravity="start|center_vertical"
+                android:text="Contact: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_details_certification"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="10sp"
+                android:layout_weight="5"
+                android:background="#81A6E4"
+                android:gravity="start|center_vertical"
+                android:text="Certification:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:layout_weight="5"
+                android:background="#F6F3F3" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

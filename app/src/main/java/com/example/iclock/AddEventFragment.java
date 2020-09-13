@@ -125,6 +125,7 @@ public class AddEventFragment extends Fragment {
                 }
             }
         });
+
         choose_file.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +138,17 @@ public class AddEventFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            image_uri = data.getData();
+            //picaso is used to get images from devices
+            Picasso.get().load(image_uri).into(image_after_upload);
+        }
     }
 
     private String getFileExtension(Uri uri) {
@@ -170,25 +182,25 @@ public class AddEventFragment extends Fragment {
 //                            String url_of_image = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 //                            Upload upload = new Upload(name_of_event, url_of_image);
 
-                            //Now you just need to get the url of the image that you have uploaded.
+//                            Now you just need to get the url of the image that you have uploaded.
                             Log.d(TAG, "onSuccess: Upload Image Successfull");
-                            Toast.makeText(context, "upload image successfull", Toast.LENGTH_SHORT).show();
 
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
+
                             createUserEvent.setImageUrl(url);
 
-                            //now we will save this object in our database
+                            //now save this object to database
                             String uploadId = databaseReference.push().getKey();
+
                             Log.d(TAG, "onSuccess: Going To Save Object To Firebase");
                             Log.d(TAG, "onSuccess: UPLOAD ID : "+uploadId);
 
                             databaseReference.child("Events_Details").child(uploadId).setValue(createUserEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(context, "Data uploaded successfully", Toast.LENGTH_SHORT).show();
-                                    progressDialog.dismiss();
+                                    Toast.makeText(context, "Event created successfully", Toast.LENGTH_SHORT).show();                                    progressDialog.dismiss();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -197,6 +209,7 @@ public class AddEventFragment extends Fragment {
                                     progressDialog.dismiss();
                                 }
                             });
+
                         }
                     });
         } else {
@@ -249,17 +262,6 @@ public class AddEventFragment extends Fragment {
             return 0;
         }
         return 1;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
-            image_uri = data.getData();
-            //picaso is used to get images from devices
-            Picasso.get().load(image_uri).into(image_after_upload);
-        }
     }
 
     public static boolean validateJavaDate(String strDate) {

@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="50sp">
+    android:layout_marginTop="60sp">
 
     <LinearLayout
         android:id="@+id/event_card"
-        android:layout_width="321dp"
-        android:layout_height="271dp"
+        android:layout_width="307dp"
+        android:layout_height="268dp"
         android:background="@drawable/side_nav_bar"
         android:elevation="15sp"
         android:fadingEdgeLength="2dp"
@@ -49,7 +49,7 @@
                 android:fontFamily="sans-serif-black"
                 android:gravity="center_vertical"
                 android:text="TextView"
-                android:textColor="#0C0C0C"
+                android:textColor="#FF5722"
                 android:textSize="15sp" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:fontFamily="sans-serif-black"
                 android:gravity="center_vertical"
                 android:text="TextView"
-                android:textColor="#090909"
+                android:textColor="#E91E63"
                 android:textSize="15sp" />
         </LinearLayout>
 
