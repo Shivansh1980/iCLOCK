@@ -5,19 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/event_card_image_back"
+    android:background="@drawable/event_card_back"
     tools:context=".EventDetails">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="374dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10sp"
-        android:layout_marginTop="55sp"
         android:layout_marginRight="10sp"
-        android:layout_marginBottom="5sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.41"
