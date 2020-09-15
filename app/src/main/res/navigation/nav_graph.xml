@@ -30,7 +30,11 @@
         android:id="@+id/addEventFragment"
         android:name="com.example.iclock.AddEventFragment"
         android:label="Add Events"
-        tools:layout="@layout/fragment_add_event" />
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/booksFragment"

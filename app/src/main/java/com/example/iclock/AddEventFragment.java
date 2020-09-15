@@ -22,6 +22,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -52,6 +55,7 @@ public class AddEventFragment extends Fragment {
     EditText contact_number;
     EditText certification;
     EditText optional_details;
+
     public static final String TAG="CheckForDatabase";
     private CreateUserEvent createUserEvent;
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -64,6 +68,7 @@ public class AddEventFragment extends Fragment {
     private EditText file_name; //edit text for the user to enter file name
     private StorageTask uploadTask; //About this described below
     private ProgressDialog progressDialog;
+    private NavController navController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,8 @@ public class AddEventFragment extends Fragment {
         progressDialog.setMessage("Please Wait...");
 
         View root = inflater.inflate(R.layout.fragment_add_event, container, false);
+
+        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
         //Enter Animation background
         Animation scale_animation = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
@@ -165,13 +172,13 @@ public class AddEventFragment extends Fragment {
             //this will create a big_number.jpg and when we call .child this means we are
             //going to add something inside Events_Images Directory
             StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(image_uri));
+
             //now we will store our image file in firebase and check for success and failure events
             //And we store the refrence of current process in this uploadtask varriable which helps us
             //when user clicks on upload button multiple time, so when he clicks one time uploadTask will
             //take  the reference and when the upload runnig and the user clicks the upload button another
             //time then we put a check if uploadTask is null or not.if it is null then this means no task is
             //running else we don't upload. This check you put above in upload onlicklisterner.
-            Toast.makeText(context, "Going to upload the image", Toast.LENGTH_SHORT).show();
 
             uploadTask = fileReference.putFile(image_uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -193,14 +200,16 @@ public class AddEventFragment extends Fragment {
 
                             //now save this object to database
                             String uploadId = databaseReference.push().getKey();
-
                             Log.d(TAG, "onSuccess: Going To Save Object To Firebase");
                             Log.d(TAG, "onSuccess: UPLOAD ID : "+uploadId);
 
                             databaseReference.child("Events_Details").child(uploadId).setValue(createUserEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(context, "Event created successfully", Toast.LENGTH_SHORT).show();                                    progressDialog.dismiss();
+                                    Toast.makeText(context, "Event created successfully", Toast.LENGTH_SHORT).show();
+                                    navController.navigate(R.id.action_addEventFragment_to_eventFragment);
+                                    progressDialog.dismiss();
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -260,7 +269,8 @@ public class AddEventFragment extends Fragment {
         } else if (contact.length() != 10) {
             Toast.makeText(context, "Please Enter Correct Contact Number", Toast.LENGTH_LONG).show();
             return 0;
-        } else if (validateJavaDate((startDate)) || validateJavaDate(endDate) ) {
+        } else if (!validateJavaDate((startDate)) || !validateJavaDate(endDate) ) {
+            Toast.makeText(context, "Please Enter The Date In Correct Formate e.g. dd/mm/yyyy", Toast.LENGTH_LONG).show();
             return 0;
         }
         return 1;
