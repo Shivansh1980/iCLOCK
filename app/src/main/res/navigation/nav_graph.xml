@@ -21,6 +21,9 @@
             android:id="@+id/action_dashboardFragment_to_booksFragment"
             app:destination="@id/booksFragment"
             app:enterAnim="@anim/scale_animation" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_moodleFragment"
+            app:destination="@id/moodleFragment" />
     </fragment>
 
     <fragment
@@ -68,5 +71,10 @@
         android:name="com.example.iclock.BookDetails"
         android:label="Book Details"
         tools:layout="@layout/fragment_book_details" />
+    <fragment
+        android:id="@+id/moodleFragment"
+        android:name="com.example.iclock.MoodleFragment"
+        android:label="Moodle"
+        tools:layout="@layout/fragment_moodle" />
 
 </navigation>

@@ -22,6 +22,7 @@ import androidx.navigation.Navigation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,31 +32,16 @@ public class DashboardFragment extends Fragment {
     EditText editText;
     Context context;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
     public DashboardFragment() {
         // Required empty public constructor
     }
 
-    public static DashboardFragment newInstance(String param1, String param2) {
-        DashboardFragment fragment = new DashboardFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -67,6 +53,7 @@ public class DashboardFragment extends Fragment {
 
         ImageButton event_img = root.findViewById(R.id.event_button);
         ImageButton sharing_img = root.findViewById(R.id.sharing_button);
+        ImageButton moodle_img = root.findViewById(R.id.moodle_button);
 
         event_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +68,14 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                 navController.navigate(R.id.booksFragment);
+            }
+        });
+
+        moodle_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.moodleFragment);
             }
         });
 

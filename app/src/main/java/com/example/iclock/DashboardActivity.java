@@ -6,11 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -18,13 +21,14 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DashboardActivity extends AppCompatActivity {
-
-    private ImageButton event_img_button;
-    private ImageButton share_img_button;
+    private ImageView profile_picture;
+    private TextView userEmail;
     private DrawerLayout drawerLayout;
     private NavController navController;
     private NavigationView navigationView;
@@ -37,6 +41,15 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         navigationView = findViewById(R.id.nav_menu);
 
+        //setting user information to navheader
+        View headerView = navigationView.getHeaderView(0);
+        profile_picture = headerView.findViewById(R.id.user_profile_picture);
+        userEmail = headerView.findViewById(R.id.user_email);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String email = user.getEmail();
+        userEmail.setText(email);
+
+        //setting toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

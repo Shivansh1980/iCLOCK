@@ -260,6 +260,8 @@ public class AddEventFragment extends Fragment {
         } else if (contact.length() != 10) {
             Toast.makeText(context, "Please Enter Correct Contact Number", Toast.LENGTH_LONG).show();
             return 0;
+        } else if (validateJavaDate((startDate)) || validateJavaDate(endDate) ) {
+            return 0;
         }
         return 1;
     }

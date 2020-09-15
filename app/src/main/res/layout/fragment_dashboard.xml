@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="409dp"
-        android:layout_height="206dp"
+        android:layout_width="match_parent"
+        android:layout_height="241dp"
         android:background="@drawable/dashboard_back_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,9 +34,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="389dp"
-        android:layout_height="200dp"
+        android:id="@+id/all_cards_of_dashboard"
+        android:layout_width="387dp"
+        android:layout_height="376dp"
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +54,10 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintHorizontal_bias="0.127"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.204">
 
             <ImageButton
                 android:id="@+id/event_button"
@@ -90,9 +91,10 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.566"
+            app:layout_constraintHorizontal_bias="0.545"
             app:layout_constraintStart_toEndOf="@+id/event_linear_layout"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.204">
 
             <ImageButton
                 android:id="@+id/sharing_button"
@@ -112,6 +114,41 @@
                 android:fontFamily="@font/alfa_slab_one"
                 android:gravity="center"
                 android:text="@string/dashboard_boook_text"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/moodle_button_layout"
+            android:layout_width="144dp"
+            android:layout_height="130dp"
+            android:background="@android:color/white"
+            android:elevation="20sp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/sahring_linear_layout"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="@+id/event_linear_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.823">
+
+            <ImageButton
+                android:id="@+id/moodle_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/white"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/moodle_icon" />
+
+            <TextView
+                android:id="@+id/moodle_text"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:paddingBottom="2sp"
+                android:text="Moodle"
                 android:textAlignment="center"
                 android:textSize="25sp" />
         </LinearLayout>
