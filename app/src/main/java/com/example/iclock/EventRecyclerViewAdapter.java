@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,20 +21,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 //here myviewholder is the subclass of eventrecyclerviewholder which represent the single dataitem in the
 //recycler view
-
-public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.MyViewHolder> {
+//the next thing is you have implemented here filterable for making search work
+public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.MyViewHolder> implements Filterable {
     private Context context;
     private List<CreateUserEvent> userEvents;
+    private List<CreateUserEvent> userEventsFullList;//to store all events for search
     private NavController navController;
 
     public EventRecyclerViewAdapter(Context context, List<CreateUserEvent> userEvents, NavController navController) {
         this.userEvents = userEvents;
         this.context = context;
         this.navController = navController;
+        userEventsFullList = new ArrayList<>();
+        userEventsFullList.addAll(userEvents);
     }
 
     //whenever RecyclerView wants the item it first call onCreateViewHolder and this onCreateViewHolder
@@ -111,4 +118,45 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             mView = itemView;
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return userEventFilter;
+    }
+
+    private Filter userEventFilter = new Filter() {
+        //the method performFiltering works in background thread and hence our ui will not block
+        //during its run and publishResults method run on UI.
+        //performFiltering return the results which it pass to publishResults and then we can show
+        //these reults on UI
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            //In the below list we will add filtered events on the basis of charsequence constraint every time when the user type some character
+            //this function will be called with the constraint that user typed on the search box
+            List<CreateUserEvent> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.toString().length() == 0)
+                filteredList.addAll(userEventsFullList);
+            else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for(CreateUserEvent createUserEvent : userEventsFullList){
+                    if(createUserEvent.getEventName().toLowerCase().contains(filter)){
+                        filteredList.add(createUserEvent);
+                    }
+                }
+            }
+            //return the filtered list by converting its type to filtered list
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            Log.d("CHECK_FILTERING", "performFiltering: filteredList : "+results.values+"\n\n");
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            userEvents.clear();
+            userEvents.addAll((Collection<? extends CreateUserEvent>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

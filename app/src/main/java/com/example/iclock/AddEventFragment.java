@@ -209,7 +209,6 @@ public class AddEventFragment extends Fragment {
                                     Toast.makeText(context, "Event created successfully", Toast.LENGTH_SHORT).show();
                                     navController.navigate(R.id.action_addEventFragment_to_eventFragment);
                                     progressDialog.dismiss();
-
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

@@ -1,13 +1,19 @@
 package com.example.iclock;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Filterable;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +42,7 @@ import java.util.Date;
 import java.util.List;
 
 public class EventFragment extends Fragment {
+    private SearchView searchView = null;
     private NavController navController;
     private RecyclerView recyclerView;
     private Context context;
@@ -52,6 +59,7 @@ public class EventFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat ss = new SimpleDateFormat("dd/MM/yyy");
         Date date = new Date();
@@ -70,7 +78,6 @@ public class EventFragment extends Fragment {
         Animation scale_animation = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
         scale_animation.setDuration(1000);
         recyclerView.setAnimation(scale_animation);
-
         recyclerView.setHasFixedSize(true);
 
         //now lets set the layout in which way recycler view is going to put view like using grid or linealayout
@@ -134,8 +141,8 @@ public class EventFragment extends Fragment {
 
                 //when we have all userEvents ready with all objects of database we will set them into our adapter for
                 //showing on to our activity view
-                EventRecyclerViewAdapter adapter = new EventRecyclerViewAdapter(context, userEvents, navController);
-                recyclerView.setAdapter(adapter);
+                eventAdapter = new EventRecyclerViewAdapter(context, userEvents, navController);
+                recyclerView.setAdapter(eventAdapter);
 
             }
 
@@ -164,5 +171,33 @@ public class EventFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    //remember, to make the below code work you need to tell this fragment that this fragment has an option menu
+    //this can be done by using setHasOptionMenu(true) in onCreate method of this fragment.
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.action_bar_menu,menu);
+        MenuItem searchItem = menu.findItem(R.id.search_view);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(context.SEARCH_SERVICE);
+
+        if(searchItem != null)
+            searchView = (SearchView)searchItem.getActionView();
+        if(searchView != null)
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                eventAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

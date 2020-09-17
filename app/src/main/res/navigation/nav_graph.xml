@@ -75,6 +75,7 @@
         android:name="com.example.iclock.BookDetails"
         android:label="Book Details"
         tools:layout="@layout/fragment_book_details" />
+
     <fragment
         android:id="@+id/moodleFragment"
         android:name="com.example.iclock.MoodleFragment"
