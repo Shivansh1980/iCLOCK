@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Change This Activity To Your New Activity which contains the signup page.
+
             }
         });
 

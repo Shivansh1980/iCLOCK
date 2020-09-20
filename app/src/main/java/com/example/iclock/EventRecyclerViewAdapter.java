@@ -156,6 +156,8 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         protected void publishResults(CharSequence constraint, FilterResults results) {
             userEvents.clear();
             userEvents.addAll((Collection<? extends CreateUserEvent>) results.values);
+            if(userEvents.isEmpty())
+                Toast.makeText(context, "No Event Found", Toast.LENGTH_SHORT).show();
             notifyDataSetChanged();
         }
     };
