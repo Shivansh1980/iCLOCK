@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="241dp"
+        android:layout_height="244dp"
         android:background="@drawable/dashboard_back_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +35,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/all_cards_of_dashboard"
-        android:layout_width="387dp"
-        android:layout_height="376dp"
+        android:layout_width="375dp"
+        android:layout_height="369dp"
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

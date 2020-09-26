@@ -7,6 +7,6 @@
         android:toXScale="100%"
         android:fromYScale="0dp"
         android:toYScale="100%"
-        android:duration="2000">
+        android:duration="1000">
     </scale>
 </set>
