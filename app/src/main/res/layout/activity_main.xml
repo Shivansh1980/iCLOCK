@@ -5,7 +5,7 @@
     android:id="@+id/main_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/signinbackground"
     app:layout_constraintCircleRadius="40sp"
     tools:context=".MainActivity">
 
@@ -16,29 +16,32 @@
         android:alpha="0.8"
         android:elevation="30sp"
         android:fontFamily="@font/aclonica"
-        android:text="@string/iclock_text"
+        android:text="Welcome"
         android:textAlignment="center"
-        android:textColor="#0C0337"
-        android:textSize="55sp"
+        android:textColor="@color/design_default_color_on_primary"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/constraint_layout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.97" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
-        android:layout_width="342dp"
-        android:layout_height="225dp"
+        android:layout_width="378dp"
+        android:layout_height="218dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531">
+        app:layout_constraintVertical_bias="0.397">
 
         <EditText
             android:id="@+id/username"
@@ -82,7 +85,7 @@
             android:fontFamily="@font/aclonica"
             android:hint="@string/login_password"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/design_default_color_on_secondary"
             android:textColorHint="#6C5757"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/login_button"
@@ -97,19 +100,19 @@
             android:layout_width="match_parent"
             android:layout_height="51dp"
             android:layout_weight="0"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/facebook_icon___copy"
             android:elevation="30sp"
             android:fadingEdgeLength="3sp"
             android:fontFamily="@font/aclonica"
             android:text="@string/log_in"
-            android:textColor="#F4EFEF"
-            android:textSize="20sp"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.912" />
+            app:layout_constraintVertical_bias="0.988" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -142,40 +145,46 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraint_layout"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintVertical_bias="0.301" >
 
-    <TextView
-        android:id="@+id/register_here"
-        android:layout_width="wrap_content"
+    </com.google.android.gms.common.SignInButton>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="@string/new_user"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="normal"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton"
-        app:layout_constraintVertical_bias="0.206" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:id="@+id/sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:fontFamily="@font/aclonica"
-        android:paddingLeft="5sp"
-        android:text="@string/sign_up"
-        android:textAlignment="viewStart"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/register_here"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton"
-        app:layout_constraintVertical_bias="0.18" />
+        <TextView
+            android:id="@+id/NewUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:text="@string/new_user"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:onClick="Signup"
+            android:text="@string/sign_up"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="24sp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

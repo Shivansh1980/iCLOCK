@@ -36,4 +36,10 @@
     <string name="events_on_college">events-on-college</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="college_name">College name</string>
+    <string name="your_branch_name">Branch</string>
+    <string name="already_registered_login_here">Already Registered? Login here</string>
 </resources>
