@@ -123,15 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Dheeraj right your signup Code  here, on clicking signup button activity or new fragment should open which take input of registration, leave the backend code on me.
         //and if you want to write backend code then do so. but then create new activity for signup page.
-//        signup = findViewById(R.id.sign_up);
-//        signup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Change This Activity To Your New Activity which contains the signup page.
-//                Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        signup = findViewById(R.id.sign_up);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Change This Activity To Your New Activity which contains the signup page.
+                Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

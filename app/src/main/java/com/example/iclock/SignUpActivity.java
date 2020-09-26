@@ -44,10 +44,6 @@ public class SignUpActivity extends AppCompatActivity {
         register = findViewById(R.id.user_register_button);
         mAuth = FirebaseAuth.getInstance();
 
-//        if(mAuth.getCurrentUser() != null)
-//            openDashboardActivity();
-
-        //getting the texts
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
