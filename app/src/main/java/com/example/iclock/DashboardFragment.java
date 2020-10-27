@@ -37,6 +37,7 @@ import com.google.firebase.storage.UploadTask;
 public class DashboardFragment extends Fragment {
     EditText editText;
     Context context;
+    MenuItem share;
 
     private String mParam1;
     private String mParam2;
@@ -46,6 +47,7 @@ public class DashboardFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
 
     }
@@ -92,5 +94,19 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.dashboard_share_menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menu_share_button:
+                Toast.makeText(context, "This Has Not Been Coded Yet", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
