@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".AddEventDetails"></activity>
+        <activity android:name=".SignUpActivity" />
 
         <meta-data
             android:name="com.google.android.actions"
@@ -25,10 +26,15 @@
             android:name=".DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
+=======
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity">
+>>>>>>> 56e6563b27fe59426a6ea4ebd16e56a011e9355a
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

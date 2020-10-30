@@ -5,22 +5,83 @@
     android:id="@+id/add_event_fragment_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/add_event_back"
+    android:background="@drawable/jwwkgj"
     tools:context=".AddEventFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:id="@+id/heaading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/Welcome_to_create_Event"
+        android:textAlignment="center"
+        android:textColor="#090909"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/choose_file_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_uploaded"
+        android:layout_width="302dp"
+        android:layout_height="471dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/facebook_icon___copy"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heaading_text" />
+
+    <Button
+        android:id="@+id/choose_file_btn"
+        android:layout_width="203dp"
+        android:layout_height="187dp"
+        android:layout_marginTop="256dp"
+        android:background="@drawable/facebook_icon___copy"
+        android:fontFamily="@font/aclonica"
+        android:paddingLeft="3sp"
+        android:paddingRight="3sp"
+        android:text="Choose File"
+        android:textColor="@color/design_default_color_secondary_variant"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="159dp"
+        android:layout_height="50dp"
+        android:background="@drawable/facebook_icon___copy"
+        android:fontFamily="@font/aclonica"
+        android:paddingLeft="3sp"
+        android:paddingRight="3sp"
+        android:shadowColor="#018786"
+        android:text="Submit"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/add_event_scrollview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.908" />
+
     <ScrollView
         android:id="@+id/add_event_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="661dp"
+        android:layout_width="336dp"
+        android:layout_height="44dp"
         android:layout_marginStart="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91">
+        app:layout_constraintVertical_bias="0.975">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,98 +92,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout_for_image_upload"
-                android:layout_width="match_parent"
-                android:layout_height="366dp"
+                android:layout_width="321dp"
+                android:layout_height="308dp"
                 android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_marginRight="5sp"
-                android:layout_marginBottom="5sp">
-
-                <ImageView
-                    android:id="@+id/image_uploaded"
-                    android:layout_width="169dp"
-                    android:layout_height="127dp"
-                    android:background="@drawable/card_shadow"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.067"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.552" />
-
-                <Button
-                    android:id="@+id/choose_file_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_shape"
-                    android:fontFamily="@font/aclonica"
-                    android:paddingLeft="3sp"
-                    android:paddingRight="3sp"
-                    android:text="Choose File"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.397"
-                    app:layout_constraintStart_toEndOf="@+id/image_uploaded"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.415" />
-
-                <Button
-                    android:id="@+id/submit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_shape"
-                    android:fontFamily="@font/aclonica"
-                    android:paddingLeft="3sp"
-                    android:paddingRight="3sp"
-                    android:text="Submit"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.396"
-                    app:layout_constraintStart_toEndOf="@+id/image_uploaded"
-                    app:layout_constraintTop_toBottomOf="@+id/choose_file_btn"
-                    app:layout_constraintVertical_bias="0.224" />
-
-                <EditText
-                    android:id="@+id/event_name"
-                    android:layout_width="166dp"
-                    android:layout_height="43dp"
-                    android:background="@drawable/shadow"
-                    android:ems="10"
-                    android:fontFamily="@font/aclonica"
-                    android:gravity="center|fill"
-                    android:hint="Enter Event Name"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp"
-                    android:textAlignment="center"
-                    android:textColor="#0A29F3"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/image_uploaded"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/image_uploaded"
-                    app:layout_constraintTop_toBottomOf="@+id/image_uploaded"
-                    app:layout_constraintVertical_bias="0.43" />
-
-                <TextView
-                    android:id="@+id/heaading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/aclonica"
-                    android:text="@string/Welcome_to_create_Event"
-                    android:textAlignment="center"
-                    android:textColor="#090909"
-                    android:textSize="26sp"
-                    app:layout_constraintBottom_toTopOf="@+id/image_uploaded"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.492"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.17" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginBottom="5sp" />
 
             <EditText
                 android:id="@+id/owner_name"
@@ -216,17 +191,6 @@
                 android:inputType="textPersonName"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/add_event_raw_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
-                android:layout_marginBottom="10sp"
-                android:text="Thanks For Using iCLOCK"
-                android:textAlignment="center"
-                android:textColor="#3DE40E"
-                android:textSize="25sp"
-                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
