@@ -2,196 +2,155 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/add_event_fragment_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/jwwkgj"
-    tools:context=".AddEventFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".DashboardActivity">
 
     <TextView
-        android:id="@+id/heaading_text"
+        android:id="@+id/EventDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
+        android:flow_horizontalAlign="center"
+        android:flow_verticalAlign="top"
         android:fontFamily="@font/aclonica"
-        android:text="@string/Welcome_to_create_Event"
-        android:textAlignment="center"
-        android:textColor="#090909"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/choose_file_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/image_uploaded"
-        android:layout_width="302dp"
-        android:layout_height="471dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/facebook_icon___copy"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heaading_text" />
-
-    <Button
-        android:id="@+id/choose_file_btn"
-        android:layout_width="203dp"
-        android:layout_height="187dp"
-        android:layout_marginTop="256dp"
-        android:background="@drawable/facebook_icon___copy"
-        android:fontFamily="@font/aclonica"
-        android:paddingLeft="3sp"
-        android:paddingRight="3sp"
-        android:text="Choose File"
-        android:textColor="@color/design_default_color_secondary_variant"
+        android:text="@string/event_details"
+        android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="517dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EventDetail"
+        app:layout_constraintVertical_bias="0.168">
+
+        <EditText
+            android:id="@+id/event_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/owner_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Enter Owner Name"
+            android:inputType="textPersonName"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="6"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:gravity="start"
+            android:hint="write short description..."
+            android:inputType="textPersonName"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/event_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Event Date"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/event_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Registration End Date"
+            android:inputType="date"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/certification_available"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Certification yes or no"
+            android:inputType="textPersonName"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Enter Contact Number"
+            android:inputType="phone"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/optional_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Optional Details"
+            android:inputType="textPersonName"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/submit_btn"
-        android:layout_width="159dp"
-        android:layout_height="50dp"
+        android:layout_width="135dp"
+        android:layout_height="54dp"
         android:background="@drawable/facebook_icon___copy"
         android:fontFamily="@font/aclonica"
-        android:paddingLeft="3sp"
-        android:paddingRight="3sp"
-        android:shadowColor="#018786"
-        android:text="Submit"
-        android:textColor="@android:color/white"
+        android:text="@string/submit"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/add_event_scrollview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.908" />
-
-    <ScrollView
-        android:id="@+id/add_event_scrollview"
-        android:layout_width="336dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/Layout_for_image_upload"
-                android:layout_width="321dp"
-                android:layout_height="308dp"
-                android:layout_marginLeft="5sp"
-                android:layout_marginTop="5sp"
-                android:layout_marginRight="5sp"
-                android:layout_marginBottom="5sp" />
-
-            <EditText
-                android:id="@+id/owner_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Enter Owner Name"
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="6"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:gravity="start"
-                android:hint="write short description..."
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/event_start_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Event Date"
-                android:importantForAutofill="no"
-                android:inputType="date"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/event_end_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Registration End Date"
-                android:inputType="date"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/certification_available"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Certification yes or no"
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/contact_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Enter Contact Number"
-                android:inputType="phone"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/optional_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Optional Details"
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintVertical_bias="0.935" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
