@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +40,8 @@ public class AddEventImageFragment extends Fragment {
     private Context context;
     private Button next_button;
     private ProgressDialog progressDialog;
+    private NavController navController;
+    private int check = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,11 @@ public class AddEventImageFragment extends Fragment {
         Button choose_file = root.findViewById(R.id.choose_file_btn);
         image_after_upload = root.findViewById(R.id.image_after_upload);
         next_button = root.findViewById(R.id.next_btn);
+        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Uploading");
+        progressDialog.setMessage("Please Wait...");
 
         choose_file.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +74,7 @@ public class AddEventImageFragment extends Fragment {
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
             }
         });
-        storageReference = FirebaseStorage.getInstance().getReference("Event_Details");
+        storageReference = FirebaseStorage.getInstance().getReference("Events_Details");
 
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +82,17 @@ public class AddEventImageFragment extends Fragment {
                 if (uploadTask != null && uploadTask.isInProgress()) {
                     Toast.makeText(context, "Upload Already in Progress", Toast.LENGTH_SHORT).show();
                 } else {
-                    progressDialog.setTitle("Uploading");
-                    progressDialog.setMessage("Please Wait....");
                     progressDialog.show();
-                    uploadImage();
+                    boolean isUploaded = uploadImage();
+                    if(isUploaded) {
+                        Toast.makeText(context, "Successfully Saved", Toast.LENGTH_SHORT).show();
+                        check = 0;
+                        navController.navigate(R.id.action_addEventImageFragment_to_addEventFragment);
+                    }
+                    else{
+                        Toast.makeText(context, "Something Wrong Happened", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
             }
         });
@@ -99,7 +115,7 @@ public class AddEventImageFragment extends Fragment {
         }
     }
 
-    public void uploadImage(){
+    public boolean uploadImage(){
         if (image_uri != null) {
             //this will create a big_number.jpg and when we call .child this means we are
             //going to add something inside Events_Images Directory
@@ -127,12 +143,17 @@ public class AddEventImageFragment extends Fragment {
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
+                            check = 1000;
                             progressDialog.dismiss();
                         }
                     });
+
         } else {
             progressDialog.dismiss();
             Toast.makeText(context, "No File Selected", Toast.LENGTH_SHORT).show();
         }
+        if(check == 1000)
+            return true;
+        else return false;
     }
 }

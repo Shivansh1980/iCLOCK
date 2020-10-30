@@ -14,23 +14,22 @@
             android:id="@+id/action_dashboardFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_addEventFragment"
-            app:destination="@id/addEventFragment"
-            app:enterAnim="@anim/scale_animation" />
-        <action
             android:id="@+id/action_dashboardFragment_to_booksFragment"
             app:destination="@id/booksFragment"
             app:enterAnim="@anim/scale_animation" />
         <action
             android:id="@+id/action_dashboardFragment_to_moodleFragment"
             app:destination="@id/moodleFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addEventImageFragment2"
+            app:destination="@id/addEventImageFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/addEventFragment"
         android:name="com.example.iclock.AddEventFragment"
         android:label="Add Events"
-        tools:layout="@layout/fragment_add_event" >
+        tools:layout="@layout/fragment_add_event">
         <action
             android:id="@+id/action_addEventFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
@@ -81,5 +80,13 @@
         android:name="com.example.iclock.MoodleFragment"
         android:label="Moodle"
         tools:layout="@layout/fragment_moodle" />
+    <fragment
+        android:id="@+id/addEventImageFragment"
+        android:name="com.example.iclock.AddEventImageFragment"
+        android:label="AddEventImageFragment" >
+        <action
+            android:id="@+id/action_addEventImageFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
 
 </navigation>
