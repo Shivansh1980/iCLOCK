@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -21,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,7 +43,6 @@ public class AddEventImageFragment extends Fragment {
     private Button next_button;
     private ProgressDialog progressDialog;
     private NavController navController;
-    private int check = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class AddEventImageFragment extends Fragment {
         Button choose_file = root.findViewById(R.id.choose_file_btn);
         image_after_upload = root.findViewById(R.id.image_after_upload);
         next_button = root.findViewById(R.id.next_btn);
-        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("Uploading");
@@ -83,16 +84,7 @@ public class AddEventImageFragment extends Fragment {
                     Toast.makeText(context, "Upload Already in Progress", Toast.LENGTH_SHORT).show();
                 } else {
                     progressDialog.show();
-                    boolean isUploaded = uploadImage();
-                    if(isUploaded) {
-                        Toast.makeText(context, "Successfully Saved", Toast.LENGTH_SHORT).show();
-                        check = 0;
-                        navController.navigate(R.id.action_addEventImageFragment_to_addEventFragment);
-                    }
-                    else{
-                        Toast.makeText(context, "Something Wrong Happened", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                    uploadImage();
                 }
             }
         });
@@ -104,6 +96,7 @@ public class AddEventImageFragment extends Fragment {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(contentResolver.getType(image_uri));
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -115,7 +108,7 @@ public class AddEventImageFragment extends Fragment {
         }
     }
 
-    public boolean uploadImage(){
+    public void uploadImage() {
         if (image_uri != null) {
             //this will create a big_number.jpg and when we call .child this means we are
             //going to add something inside Events_Images Directory
@@ -143,8 +136,14 @@ public class AddEventImageFragment extends Fragment {
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
-                            check = 1000;
                             progressDialog.dismiss();
+                            Toast.makeText(context, "Now Fill The Details", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.action_addEventImageFragment_to_addEventFragment);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Failed To Upload Check your Connection", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -152,8 +151,5 @@ public class AddEventImageFragment extends Fragment {
             progressDialog.dismiss();
             Toast.makeText(context, "No File Selected", Toast.LENGTH_SHORT).show();
         }
-        if(check == 1000)
-            return true;
-        else return false;
     }
 }
