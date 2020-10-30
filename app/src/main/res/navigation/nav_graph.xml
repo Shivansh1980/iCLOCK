@@ -61,11 +61,6 @@
         <argument
             android:name="event_details"
             app:argType="com.example.iclock.CreateUserEvent" />
-        <action
-            android:id="@+id/action_eventFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/dashboardFragment"
-            app:popUpToInclusive="true" />
 
     </fragment>
 
@@ -88,7 +83,7 @@
     <fragment
         android:id="@+id/addEventImageFragment"
         android:name="com.example.iclock.AddEventImageFragment"
-        android:label="AddEventImageFragment" >
+        android:label="Pick Event Image" >
         <action
             android:id="@+id/action_addEventImageFragment_to_addEventFragment"
             app:destination="@id/addEventFragment" />
