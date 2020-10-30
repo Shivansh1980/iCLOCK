@@ -61,6 +61,11 @@
         <argument
             android:name="event_details"
             app:argType="com.example.iclock.CreateUserEvent" />
+        <action
+            android:id="@+id/action_eventFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 

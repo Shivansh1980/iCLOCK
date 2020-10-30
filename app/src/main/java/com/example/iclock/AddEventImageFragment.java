@@ -77,24 +77,24 @@ public class AddEventImageFragment extends Fragment {
         });
         storageReference = FirebaseStorage.getInstance().getReference("Events_Details");
 
+        //This will be used when user clicks on back button without filling the event form so the previous image which he selected will be displayed.
+        if(image_uri != null)
+            Picasso.get().load(image_uri).into(image_after_upload);;
+
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uploadTask != null && uploadTask.isInProgress()) {
-                    Toast.makeText(context, "Upload Already in Progress", Toast.LENGTH_SHORT).show();
+
+                if (image_uri == null) {
+                    Toast.makeText(context, "Please Select Image to Proceed", Toast.LENGTH_SHORT).show();
                 } else {
-                    progressDialog.show();
-                    uploadImage();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Image-Uri",image_uri.toString());
+                    navController.navigate(R.id.action_addEventImageFragment_to_addEventFragment,bundle);
                 }
             }
         });
         return root;
-    }
-
-    private String getFileExtension(Uri uri) {
-        ContentResolver contentResolver = context.getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(contentResolver.getType(image_uri));
     }
 
     @Override
@@ -108,48 +108,13 @@ public class AddEventImageFragment extends Fragment {
         }
     }
 
-    public void uploadImage() {
-        if (image_uri != null) {
-            //this will create a big_number.jpg and when we call .child this means we are
-            //going to add something inside Events_Images Directory
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(image_uri));
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+    }
 
-            //now we will store our image file in firebase and check for success and failure events
-            //And we store the refrence of current process in this uploadtask varriable which helps us
-            //when user clicks on upload button multiple time, so when he clicks one time uploadTask will
-            //take  the reference and when the upload runnig and the user clicks the upload button another
-            //time then we put a check if uploadTask is null or not.if it is null then this means no task is
-            //running else we don't upload. This check you put above in upload onlicklisterner.
-
-            uploadTask = fileReference.putFile(image_uri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            lets create the object with name and url of the image and save this object into our database.
-//                            String name_of_event = file_name.getText().toString().trim();
-//                            String url_of_image = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-//                            Upload upload = new Upload(name_of_event, url_of_image);
-
-//                            Now you just need to get the url of the image that you have uploaded.
-                            Log.d("CheckImageUpload", "onSuccess: Upload Image Successfull");
-
-                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                            while (!uri.isComplete()) ;
-                            String url = uri.getResult().toString();
-                            progressDialog.dismiss();
-                            Toast.makeText(context, "Now Fill The Details", Toast.LENGTH_SHORT).show();
-                            navController.navigate(R.id.action_addEventImageFragment_to_addEventFragment);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, "Failed To Upload Check your Connection", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-        } else {
-            progressDialog.dismiss();
-            Toast.makeText(context, "No File Selected", Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }
