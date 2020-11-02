@@ -21,6 +21,7 @@
     <string name="contact_number_2">Contact Number 2</string>
     <string name="menu_home">Home</string>
     <string name="menu_add_event">Add Events</string>
+    <string name="menu_add_book">Add Books</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="events">Events</string>
     <string name="sharing">Sharing</string>
