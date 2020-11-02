@@ -4,7 +4,7 @@
     <string name="app_name">iCLOCK</string>
     <string name="iclock_text">Iclock</string>
     <string name="login_password">Password</string>
-    <string name="or">or singn in with</string>
+    <string name="or">or Sign in with</string>
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,9 +12,16 @@
     <string name="nav_header_subtitle">www.iCLOCK.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="event_details">Event Details</string>
+    <string name="event_name">Event Name</string>
+    <string name="submit">Submit</string>
+    <string name="description">Description</string>
+    <string name="imp_dates">Imp Dates</string>
+    <string name="contact_number_1">Contact Number 1</string>
+    <string name="contact_number_2">Contact Number 2</string>
     <string name="menu_home">Home</string>
     <string name="menu_add_event">Add Events</string>
+    <string name="menu_add_book">Add Books</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="events">Events</string>
     <string name="sharing">Sharing</string>
@@ -30,9 +37,9 @@
     <string name="dashboard_text">Dashboard</string>
     <string name="dashboard_boook_text">Books</string>
 
-    <string name="Welcome_to_create_Event">Create Your Event</string>
-    <string name="new_user">New User?</string>
-    <string name="sign_up">signup</string>
+    <string name="Welcome_to_create_Event">Enter your Event</string>
+    <string name="new_user">New User? </string>
+    <string name="sign_up"> Sign up</string>
     <string name="events_on_college">events-on-college</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -42,4 +49,6 @@
     <string name="college_name">College name</string>
     <string name="your_branch_name">Branch</string>
     <string name="already_registered_login_here">Already Registered? Login here</string>
+    <string name="iclok">TODOi</string>
+    <string name="googleimg">TODO</string>
 </resources>

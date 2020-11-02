@@ -8,9 +8,16 @@
             android:id="@+id/dashboardFragment"
             android:icon="@drawable/home_icon"
             android:title="@string/menu_home" />
+
         <item
-            android:id="@+id/addEventFragment"
+            android:id="@+id/addEventImageFragment"
             android:icon="@drawable/plus_icon"
             android:title="@string/menu_add_event" />
+
+        <item
+            android:id="@+id/addBookImageFragment"
+            android:icon="@drawable/plus_icon"
+            android:title="@string/menu_add_book" />
+
     </group>
 </menu>

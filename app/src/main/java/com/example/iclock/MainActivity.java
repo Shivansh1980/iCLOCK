@@ -12,12 +12,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,6 +32,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
 import static java.lang.Thread.sleep;
 
 //ignore the above classes many classes has been added by the api of firebase to create sign in button.
@@ -71,14 +73,14 @@ public class MainActivity extends AppCompatActivity {
 
         //finding layout to animate by using the animations available in java
         ConstraintLayout username_pass_layout = findViewById(R.id.constraint_layout);
-        TextView text = findViewById(R.id.iclock_text);
+//        TextView text = findViewById(R.id.iclock_text);
         Button login_button = findViewById(R.id.login_button);
         SignInButton signin_google = findViewById(R.id.signInButton);
         TextView orLoginWith = findViewById(R.id.or_login_with);
 
         //Animating the layouts by using the setanimation method available in java
         username_pass_layout.setAnimation(bottom_animation);
-        text.setAnimation(top_animation);
+//        text.setAnimation(top_animation);
         login_button.setAnimation(scale_animation);
         signin_google.setAnimation(bottom_animation);
         orLoginWith.setAnimation(scale_animation);
@@ -90,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 signIn();
             }
         });
+
+        //check already login or not
+        if(mAuth.getCurrentUser() != null ){
+            startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
+            finish();
+        }
 
 
         //username and password edit text from user
@@ -263,4 +271,5 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
     }
+
 }
