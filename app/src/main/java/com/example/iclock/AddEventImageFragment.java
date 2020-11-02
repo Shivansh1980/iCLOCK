@@ -1,16 +1,23 @@
 package com.example.iclock;
 
 import android.app.ProgressDialog;
+<<<<<<< HEAD
+=======
+import android.content.ContentResolver;
+>>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+=======
+>>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +25,28 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+<<<<<<< HEAD
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+=======
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+>>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;

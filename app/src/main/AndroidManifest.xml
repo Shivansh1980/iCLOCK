@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".AddBookImageFragment"></activity>
+=======
+>>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
         <activity android:name=".SignUpActivity" />
 
         <meta-data
@@ -26,9 +29,15 @@
             android:name=".DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
+=======
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".MainActivity"
+>>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
