@@ -30,7 +30,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -43,7 +42,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
 
 public class AddEventFragment extends Fragment {
 
@@ -64,6 +62,7 @@ public class AddEventFragment extends Fragment {
     private ImageView image_after_upload; //This is the image view when user choosed a image and the selected image will be  shown in this image view
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
+    private FirebaseStorage mFirebaseStorage;
     private Context context;
     private EditText file_name; //edit text for the user to enter file name
     private StorageTask uploadTask; //About this described below
@@ -90,17 +89,11 @@ public class AddEventFragment extends Fragment {
 
         navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
-        //Enter Animation background
-        Animation scale_animation = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
-        scale_animation.setDuration(1000);
-        ScrollView scrollView = root.findViewById(R.id.add_event_scrollview);
-        scrollView.setAnimation(scale_animation);
-
         //Image Chooseing area
-        Button choose_file = root.findViewById(R.id.choose_file_btn);
         Button submit = root.findViewById(R.id.submit_btn);
         file_name = root.findViewById(R.id.event_name);
-        image_after_upload = root.findViewById(R.id.image_uploaded);
+        image_after_upload = root.findViewById(R.id.image_after_upload);
+        image_uri = Uri.parse(getArguments().getString("Image-Uri"));
 
         //All text Fields of input
         event_name = root.findViewById(R.id.event_name);
@@ -116,7 +109,6 @@ public class AddEventFragment extends Fragment {
         storageReference = FirebaseStorage.getInstance().getReference("Events_Details");
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,38 +116,17 @@ public class AddEventFragment extends Fragment {
                     Toast.makeText(context, "Upload Already in Progress", Toast.LENGTH_SHORT).show();
                 } else {
                     createUserEvent = getUserInformationObject();
-                    if (createUserEvent != null)
+                    if (createUserEvent != null) {
                         uploadUserInformationToDatabase();
+                        progressDialog.show();
+                    }
                     else {
                         return;
                     }
                 }
             }
         });
-
-        choose_file.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                //this will take care that we will see only images when user clicks on choose file
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                //now start activity for result and that will return uri of picked image, which we can get using onActiviityResult
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
-            }
-        });
         return root;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
-            image_uri = data.getData();
-            //picaso is used to get images from devices
-            Picasso.get().load(image_uri).into(image_after_upload);
-        }
     }
 
     private String getFileExtension(Uri uri) {
@@ -165,10 +136,7 @@ public class AddEventFragment extends Fragment {
     }
 
     private void uploadUserInformationToDatabase() {
-        progressDialog.show();
-
         if (image_uri != null) {
-
             //this will create a big_number.jpg and when we call .child this means we are
             //going to add something inside Events_Images Directory
             StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(image_uri));
@@ -190,36 +158,40 @@ public class AddEventFragment extends Fragment {
 //                            Upload upload = new Upload(name_of_event, url_of_image);
 
 //                            Now you just need to get the url of the image that you have uploaded.
-                            Log.d(TAG, "onSuccess: Upload Image Successfull");
+                            Log.d("CheckImageUpload", "onSuccess: Upload Image Successfull");
 
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
-
                             createUserEvent.setImageUrl(url);
 
-                            //now save this object to database
-                            String uploadId = databaseReference.push().getKey();
-                            Log.d(TAG, "onSuccess: Going To Save Object To Firebase");
-                            Log.d(TAG, "onSuccess: UPLOAD ID : "+uploadId);
 
+                            String uploadId = databaseReference.push().getKey();
                             databaseReference.child("Events_Details").child(uploadId).setValue(createUserEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(context, "Event created successfully", Toast.LENGTH_SHORT).show();
-                                    navController.navigate(R.id.action_addEventFragment_to_eventFragment);
                                     progressDialog.dismiss();
+                                    Toast.makeText(context, "Event Created SuccessFully", Toast.LENGTH_SHORT).show();
+                                    navController.navigate(R.id.action_addEventFragment_to_eventFragment);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(context, "Failed to upload data", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Failed to upload details", Toast.LENGTH_SHORT).show();
+                                    StorageReference photoref = mFirebaseStorage.getReferenceFromUrl( createUserEvent.getImageUrl() );
+                                    photoref.delete();
                                     progressDialog.dismiss();
                                 }
                             });
-
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Failed To Upload Check your Connection", Toast.LENGTH_SHORT).show();
                         }
                     });
+
         } else {
             progressDialog.dismiss();
             Toast.makeText(context, "No File Selected", Toast.LENGTH_SHORT).show();

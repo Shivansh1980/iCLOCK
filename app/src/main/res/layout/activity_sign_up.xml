@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signinbackground"
+    android:background="@drawable/mitsblurback"
     tools:context=".SignUpActivity">
 
     <TextView
@@ -17,24 +17,23 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649" />
+        app:layout_constraintVertical_bias="0.635" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="421dp"
+        android:layout_height="348dp"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498">
+        app:layout_constraintVertical_bias="0.428">
 
         <EditText
             android:id="@+id/user_username"
@@ -48,6 +47,7 @@
             android:alpha="0.8"
             android:autofillHints=""
             android:background="@drawable/shadow"
+            android:drawableStart="@drawable/user_name"
             android:drawablePadding="10sp"
             android:elevation="10sp"
             android:ems="10"
@@ -71,6 +71,7 @@
             android:alpha="0.8"
             android:autofillHints=""
             android:background="@drawable/shadow"
+            android:drawableStart="@drawable/lock"
             android:drawablePadding="10sp"
             android:elevation="10sp"
             android:ems="10"
@@ -94,6 +95,7 @@
             android:alpha="0.8"
             android:autofillHints=""
             android:background="@drawable/shadow"
+            android:drawableStart="@drawable/contacta"
             android:drawablePadding="10sp"
             android:elevation="10sp"
             android:ems="10"
@@ -117,6 +119,7 @@
             android:alpha="0.8"
             android:autofillHints=""
             android:background="@drawable/shadow"
+            android:drawableStart="@drawable/clgname"
             android:drawablePadding="10sp"
             android:elevation="10sp"
             android:ems="10"
@@ -140,6 +143,7 @@
             android:alpha="0.8"
             android:autofillHints=""
             android:background="@drawable/shadow"
+            android:drawableStart="@drawable/branchhh"
             android:drawablePadding="10sp"
             android:elevation="10sp"
             android:ems="10"
@@ -156,9 +160,10 @@
         android:id="@+id/user_register_button"
         android:layout_width="308dp"
         android:layout_height="53dp"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/facebook_icon___copy"
         android:fontFamily="@font/aclonica"
         android:text="@string/register"
+        android:textColor="@color/design_default_color_on_secondary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +180,7 @@
         android:onClick="Login"
         android:text="@string/already_registered_login_here"
         android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="17sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

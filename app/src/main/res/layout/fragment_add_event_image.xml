@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_event_fragment_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/jwwkgj"
+    tools:context=".AddEventFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/heading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Insert Your Event Image"
+        android:textAlignment="center"
+        android:textColor="#090909"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/choose_file_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <ImageView
+        android:id="@+id/image_after_upload"
+        android:layout_width="315dp"
+        android:layout_height="294dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/facebook_icon___copy"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/choose_file_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading_text" />
+
+    <Button
+        android:id="@+id/choose_file_btn"
+        android:layout_width="182dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="440dp"
+        android:background="@drawable/facebook_icon___copy"
+        android:fontFamily="@font/aclonica"
+        android:paddingLeft="3sp"
+        android:paddingRight="3sp"
+        android:text="Choose File"
+        android:textColor="@color/design_default_color_secondary_variant"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674" />
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="159dp"
+        android:layout_height="50dp"
+        android:background="@drawable/facebook_icon___copy"
+        android:fontFamily="@font/aclonica"
+        android:paddingLeft="3sp"
+        android:paddingRight="3sp"
+        android:shadowColor="#018786"
+        android:text="Next"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
