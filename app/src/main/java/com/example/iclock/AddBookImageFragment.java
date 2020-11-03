@@ -1,23 +1,16 @@
 package com.example.iclock;
 
 import android.app.ProgressDialog;
-<<<<<<< HEAD
-=======
-import android.content.ContentResolver;
->>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-=======
->>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,33 +18,15 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-<<<<<<< HEAD
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-=======
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
->>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;
 
-public class AddEventImageFragment extends Fragment {
+
+public class AddBookImageFragment extends Fragment {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri image_uri;
     private ImageView image_after_upload;
@@ -61,6 +36,8 @@ public class AddEventImageFragment extends Fragment {
     private Button next_button;
     private ProgressDialog progressDialog;
     private NavController navController;
+
+    // TODO: Rename parameter arguments, choose names that match
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,8 +49,8 @@ public class AddEventImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_add_event_image, container, false);
-        Button choose_file = root.findViewById(R.id.choose_file_btn);
+        View root = inflater.inflate(R.layout.fragment_add_book_image, container, false);
+        Button choose_file = root.findViewById(R.id.choose_file_btn1);
         image_after_upload = root.findViewById(R.id.image_after_upload);
         next_button = root.findViewById(R.id.next_btn);
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
@@ -93,11 +70,12 @@ public class AddEventImageFragment extends Fragment {
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
             }
         });
-        storageReference = FirebaseStorage.getInstance().getReference("Events_Details");
+        storageReference = FirebaseStorage.getInstance().getReference("Books_Details");
 
         //This will be used when user clicks on back button without filling the event form so the previous image which he selected will be displayed.
-        if(image_uri != null)
-            Picasso.get().load(image_uri).into(image_after_upload);;
+        if (image_uri != null)
+            Picasso.get().load(image_uri).into(image_after_upload);
+        ;
 
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,15 +85,16 @@ public class AddEventImageFragment extends Fragment {
                     Toast.makeText(context, "Please Select Image to Proceed", Toast.LENGTH_SHORT).show();
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("Image-Uri",image_uri.toString());
-                    navController.navigate(R.id.action_addEventImageFragment_to_addEventFragment,bundle);
+                    bundle.putString("Image-Uri", image_uri.toString());
+                    navController.navigate(R.id.action_addBookImageFragment_to_addBookFragment, bundle);
                 }
             }
         });
         return root;
+
+
     }
 
-    @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
