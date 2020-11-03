@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_addEventImageFragment2"
             app:destination="@id/addEventImageFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addBookImageFragment"
+            app:destination="@id/addBookImageFragment" />
     </fragment>
 
     <fragment
@@ -45,6 +48,9 @@
             app:destination="@id/bookDetails"
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_close_exit" />
+        <action
+            android:id="@+id/action_booksFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
 
     <fragment
@@ -87,6 +93,24 @@
         <action
             android:id="@+id/action_addEventImageFragment_to_addEventFragment"
             app:destination="@id/addEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBookImageFragment"
+        android:name="com.example.iclock.AddBookImageFragment"
+        android:label="fragment_add_book_image"
+        tools:layout="@layout/fragment_add_book_image" >
+        <action
+            android:id="@+id/action_addBookImageFragment_to_addBookFragment"
+            app:destination="@id/addBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBookFragment"
+        android:name="com.example.iclock.AddBookFragment"
+        android:label="fragment_add_book"
+        tools:layout="@layout/fragment_add_book" >
+        <action
+            android:id="@+id/action_addBookFragment_to_booksFragment"
+            app:destination="@id/booksFragment" />
     </fragment>
 
 </navigation>
