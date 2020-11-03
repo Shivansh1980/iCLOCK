@@ -23,12 +23,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_addEventImageFragment2"
             app:destination="@id/addEventImageFragment" />
-<<<<<<< HEAD
         <action
             android:id="@+id/action_dashboardFragment_to_addBookImageFragment"
             app:destination="@id/addBookImageFragment" />
-=======
->>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
     </fragment>
 
     <fragment
@@ -97,7 +94,6 @@
             android:id="@+id/action_addEventImageFragment_to_addEventFragment"
             app:destination="@id/addEventFragment" />
     </fragment>
-<<<<<<< HEAD
     <fragment
         android:id="@+id/addBookImageFragment"
         android:name="com.example.iclock.AddBookImageFragment"
@@ -116,7 +112,5 @@
             android:id="@+id/action_addBookFragment_to_booksFragment"
             app:destination="@id/booksFragment" />
     </fragment>
-=======
->>>>>>> 3c4555552146eb1601401ed7277a787b36a6cd21
 
 </navigation>
