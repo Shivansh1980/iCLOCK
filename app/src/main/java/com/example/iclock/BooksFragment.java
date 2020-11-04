@@ -1,11 +1,16 @@
 package com.example.iclock;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -14,7 +19,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iclock.dummy.CreateBook;
-import com.example.iclock.dummy.DummyContent;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +39,14 @@ import java.util.List;
 public class BooksFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private int mColumnCount = 1;
-    private List<CreateBook>bookList;
+    private List<CreateBook> bookList;
     private Context context;
     private NavController navController;
+    private static String TAG = "checkforupload";
+    private DatabaseReference databaseReference;
+    private BookRecyclerViewAdapter bookRecyclerViewAdapter;
+    private RecyclerView recyclerView;
+    private ProgressDialog progressDialog;
 
     public BooksFragment() {
 
@@ -46,9 +64,6 @@ public class BooksFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
     }
 
     @Override
@@ -58,27 +73,56 @@ public class BooksFragment extends Fragment {
 
         //getting below things to pass them in our recycler view
         context = container.getContext();
-        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        bookList = new ArrayList<CreateBook>();
+        bookList = new ArrayList<>();
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Loading Books");
+        progressDialog.setMessage("Please Wait this may take few seconds....");
+        progressDialog.setCancelable(false);
+
+        recyclerView = view.findViewById(R.id.list);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layoutManager);
+
         CreateBook book = new CreateBook();
-
         book.setBookName("Introduction to Algorithm");
         book.setBookDescription("This is the best book to learn algorithm and data structure");
-        book.setBookImageUrl("https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-e1464023124869.jpeg");
+        book.setBookImageUrl("https://firebasestorage.googleapis.com/v0/b/iclock-690ad.appspot.com/o/Books_Details%2F1604475454718.webp?alt=media&token=c13847e9-9e38-4682-a2bc-fc98450f2406");
         bookList.add(book);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+        databaseReference = FirebaseDatabase.getInstance().getReference("Books_Details");
+        progressDialog.show();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "onDataChange: Going To Retrive Data Of Book From Firebases");
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    final CreateBook createBook = postSnapshot.getValue(CreateBook.class);
+                    Log.d(TAG, "onDataChange: adding book to book list");
+                    bookList.add(createBook);
+                    for(CreateBook book : bookList){
+                        Log.d(TAG, "onCreateView: "+book.getBookName());
+                    }
+                    continue;
+                }
+                bookRecyclerViewAdapter = new BookRecyclerViewAdapter(bookList, context, navController);
+                recyclerView.setAdapter(bookRecyclerViewAdapter);
+                progressDialog.dismiss();
+                progressDialog.cancel();
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(bookList,context,navController));
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Log.d(TAG, "onCreateView: Going to call Recycler View of Book with the following booklist : ");
+        for(CreateBook books : bookList){
+            Log.d(TAG, "onCreateView: "+books.getBookName());
         }
+        Log.d(TAG, "onCreateView: Size of Book List : "+bookList.size());
         return view;
     }
 }

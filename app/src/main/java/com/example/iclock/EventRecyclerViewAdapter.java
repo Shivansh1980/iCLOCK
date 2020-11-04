@@ -74,21 +74,19 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         holder.startDate.setText("start date:\n");
         holder.startDate.append(userEvents.get(position).getEventStartdate());
 
-        Picasso.get().load(
-                    userEvents.get(position).getImageUrl() //userevents.get(position) will give the clicked object by user onclick the card
-                )
-                .fit()
-                .centerCrop()
-                .into(holder.eventImage);
+        Picasso.get().load(userEvents.get(position).getImageUrl()) //userevents.get(position) will give the clicked object by user onclick the card
+                    .fit()
+                    .centerCrop()
+                    .into(holder.eventImage);
 
-                holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                //we are able serialize the below CreateUserEvent Class because the class CreateUserEvent implements serializable
-                Log.d("Check Bundle", "onClick: ");
-                bundle.putSerializable("event_details",createUserEvent);
-                navController.navigate(R.id.action_eventFragment_to_eventDetails,bundle);
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Bundle bundle = new Bundle();
+            //we are able serialize the below CreateUserEvent Class because the class CreateUserEvent implements serializable
+            Log.d("Check Bundle", "onClick: ");
+            bundle.putSerializable("event_details",createUserEvent);
+            navController.navigate(R.id.action_eventFragment_to_eventDetails,bundle);
             }
         });
     }

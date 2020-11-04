@@ -12,9 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Filterable;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -127,9 +125,7 @@ public class EventFragment extends Fragment {
                                     });
                                     Toast.makeText(context, createUserEvent.getEventName()+" Event Date Expired", Toast.LENGTH_SHORT).show();
                                 }
-
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
