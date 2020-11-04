@@ -235,7 +235,7 @@ public class AddBookFragment extends Fragment {
         if (TextUtils.isEmpty(bookName) || TextUtils.isEmpty(bookDescription) || TextUtils.isEmpty(price) || TextUtils.isEmpty(publishingYear) ||  TextUtils.isEmpty(contact)) {
             Toast.makeText(context, "You can't leave any field empty", Toast.LENGTH_SHORT).show();
             return 0;
-        } else if (bookDescription.length() <= 40) {
+        } else if (bookDescription.length() <= 10) {
             Toast.makeText(context, "Book Description too short", Toast.LENGTH_SHORT).show();
             return 0;
         } else if (contact.length() != 10) {
