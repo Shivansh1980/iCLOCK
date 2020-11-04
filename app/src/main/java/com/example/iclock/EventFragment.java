@@ -125,9 +125,7 @@ public class EventFragment extends Fragment {
                                     });
                                     Toast.makeText(context, createUserEvent.getEventName()+" Event Date Expired", Toast.LENGTH_SHORT).show();
                                 }
-
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();

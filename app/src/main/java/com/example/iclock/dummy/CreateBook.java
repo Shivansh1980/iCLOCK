@@ -1,6 +1,8 @@
 package com.example.iclock.dummy;
 
-public class CreateBook {
+import java.io.Serializable;
+
+public class CreateBook implements Serializable {
     private String bookName;
     private String bookDescription;
     private String bookPrice;
@@ -8,6 +10,50 @@ public class CreateBook {
     private String bookForSemester;
     private String bookSubject;
     private String bookForBranch;
+    private String bookOwner;
+    private String userId;
+    private String publishingYear;
+    private String contact;
+
+    public String getBookOwner() {
+        return bookOwner;
+    }
+    public String getContact(){
+        return  contact;
+    }
+    public void setContact(String contact){
+        this.contact = contact;
+    }
+
+    public void setBookOwner(String bookOwner) {
+        this.bookOwner = bookOwner;
+    }
+
+    public String UserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPublishingYear() {
+        return publishingYear;
+    }
+
+    public void setPublishingYear(String publishingYear) {
+        this.publishingYear = publishingYear;
+    }
+
+    public String getOtherDetailOptional() {
+        return otherDetailOptional;
+    }
+
+    public void setOtherDetailOptional(String otherDetailOptional) {
+        this.otherDetailOptional = otherDetailOptional;
+    }
+
+    private String otherDetailOptional;
 
     public String getBookName() {
         return bookName;

@@ -14,6 +14,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.iclock.dummy.CreateBook;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,9 +44,11 @@ public class AddBookFragment extends Fragment {
     EditText contact_number;
     EditText owner_name;
     EditText optional_details;
+    EditText bookForSemester;
+    EditText bookForBranch;
 
     public static final String TAG="CheckForDatabase";
-    private CreateUserBook createUserBook;
+    private CreateBook createUserBook;
     private static final int PICK_IMAGE_REQUEST = 1;
     private FirebaseAuth mAuth;
     private Uri image_uri;
@@ -92,6 +96,8 @@ public class AddBookFragment extends Fragment {
         contact_number = root.findViewById(R.id.contact_number);
         publishing_year = root.findViewById(R.id.publishing_year);
         optional_details = root.findViewById(R.id.optional_detail);
+        bookForSemester = root.findViewById(R.id.book_for_semester);
+        bookForBranch = root.findViewById(R.id.book_for_branch);
 
 
         //storage references and creating the directories in firebase using below two lines
@@ -152,10 +158,11 @@ public class AddBookFragment extends Fragment {
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
-                            createUserBook.setImageUrl(url);
+                            createUserBook.setBookImageUrl(url);
 
 
                             String uploadId = databaseReference.push().getKey();
+
                             databaseReference.child("Books_Details").child(uploadId).setValue(createUserBook).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -163,12 +170,13 @@ public class AddBookFragment extends Fragment {
                                     progressDialog.dismiss();
                                     Toast.makeText(context, "Book added SuccessFully", Toast.LENGTH_SHORT).show();
                                     navController.navigate(R.id.action_addBookFragment_to_booksFragment);
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(context, "Failed to upload details", Toast.LENGTH_SHORT).show();
-                                    StorageReference photoref = mFirebaseStorage.getReferenceFromUrl( createUserBook.getImageUrl() );
+                                    StorageReference photoref = mFirebaseStorage.getReferenceFromUrl( createUserBook.getBookImageUrl() );
                                     photoref.delete();
                                     progressDialog.dismiss();
                                 }
@@ -187,8 +195,7 @@ public class AddBookFragment extends Fragment {
         }
     }
 
-    private CreateUserBook getUserInformationObject() {
-
+    private CreateBook getUserInformationObject() {
         String bookName = book_name.getText().toString();
         String bookDescription = book_description.getText().toString();
         String Price = price.getText().toString();
@@ -197,17 +204,23 @@ public class AddBookFragment extends Fragment {
         String userId = mAuth.getCurrentUser().getUid();
         String contact = contact_number.getText().toString();
         String extraDetails = optional_details.getText().toString();
+        String bookSemester = bookForSemester.getText().toString();
+        String bookBranch = bookForBranch.getText().toString();
 
         int isAllRight = performInfoCheck(bookName, bookDescription, Price,  contact, Publishing_year);
 
         if (isAllRight == 1) {
-            CreateUserBook createUserBook = new CreateUserBook();
+            CreateBook createUserBook = new CreateBook();
+
             createUserBook.setBookName(bookName);
-            createUserBook.setDescription(bookDescription);
-            createUserBook.setPrice(Price);
-            createUserBook.setContact(contact);
+            createUserBook.setBookDescription(bookDescription);
+            createUserBook.setBookPrice(Price);
+            createUserBook.setBookOwner(Owner_name);
             createUserBook.setPublishingYear(Publishing_year);
+            createUserBook.setContact(contact);
             createUserBook.setUserId(userId);
+            createUserBook.setBookForSemester(bookSemester);
+            createUserBook.setBookForBranch(bookBranch);
 
             if (extraDetails != "" || extraDetails != null)
                 createUserBook.setOtherDetailOptional(extraDetails);
@@ -223,7 +236,7 @@ public class AddBookFragment extends Fragment {
             Toast.makeText(context, "You can't leave any field empty", Toast.LENGTH_SHORT).show();
             return 0;
         } else if (bookDescription.length() <= 40) {
-            Toast.makeText(context, "Event Description too short", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Book Description too short", Toast.LENGTH_SHORT).show();
             return 0;
         } else if (contact.length() != 10) {
             Toast.makeText(context, "Please Enter Correct Contact Number", Toast.LENGTH_LONG).show();
