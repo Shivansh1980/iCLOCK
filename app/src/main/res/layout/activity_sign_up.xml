@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal|fill_horizontal"
     android:background="@drawable/mitsblurback"
     tools:context=".SignUpActivity">
 
@@ -177,6 +178,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/aclonica"
+        android:gravity="center_horizontal|fill_horizontal"
         android:onClick="Login"
         android:text="@string/already_registered_login_here"
         android:textColor="@color/design_default_color_on_secondary"
