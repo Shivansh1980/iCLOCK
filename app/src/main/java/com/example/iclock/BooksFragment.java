@@ -86,10 +86,6 @@ public class BooksFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         CreateBook book = new CreateBook();
-        book.setBookName("Introduction to Algorithm");
-        book.setBookDescription("This is the best book to learn algorithm and data structure");
-        book.setBookImageUrl("https://firebasestorage.googleapis.com/v0/b/iclock-690ad.appspot.com/o/Books_Details%2F1604475454718.webp?alt=media&token=c13847e9-9e38-4682-a2bc-fc98450f2406");
-        bookList.add(book);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Books_Details");
         progressDialog.show();
