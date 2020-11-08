@@ -192,6 +192,16 @@ public class DashboardActivity extends AppCompatActivity {
                                     }
                                 });
                             }
+
+//                            UserInformation userInformation = new UserInformation();
+//                            userInformation.setImageUrl(uploadedImageUrl);
+//                            userInformation.setUserId(user.getUid());
+//                            databaseReference.child(user.getUid()).setValue(userInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    Toast.makeText(DashboardActivity.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
+//                                }
+//                            });
                             databaseReference.child(user.getUid()).child("imageUrl").setValue(uploadedImageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
