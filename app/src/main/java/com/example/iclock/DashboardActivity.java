@@ -85,9 +85,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         String email = user.getEmail();
         userEmail.setText(email);
-        if (!setUserProfilePicture()) {
-            Toast.makeText(this, "Please Upload you Profile Picture", Toast.LENGTH_SHORT).show();
-        }
+        setUserProfilePicture();
 
         profile_picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,20 +129,20 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
-    private boolean setUserProfilePicture() {
-        final boolean[] isChanged = {false};
+    private void setUserProfilePicture() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     final UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
                     String userId = userInformation.getUserId();
-                    if (userId == user.getUid() && userInformation.getImageUrl() != "None") {
+                    String url = userInformation.getImageUrl();
+                    Log.d(TAG, "onDataChange: User Information : "+userInformation.getUserName()+"     "+url);
+                    if (userId == user.getUid()) {
                         Picasso.get().load(userInformation.getImageUrl())
                                 .centerCrop()
                                 .fit()
                                 .into(profile_picture);
-                        isChanged[0] = true;
                     }
                 }
             }
@@ -154,7 +152,6 @@ public class DashboardActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        return isChanged[0];
     }
 
     private String getFileExtension(Uri uri) {
@@ -193,15 +190,6 @@ public class DashboardActivity extends AppCompatActivity {
                                 });
                             }
 
-//                            UserInformation userInformation = new UserInformation();
-//                            userInformation.setImageUrl(uploadedImageUrl);
-//                            userInformation.setUserId(user.getUid());
-//                            databaseReference.child(user.getUid()).setValue(userInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    Toast.makeText(DashboardActivity.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
-//                                }
-//                            });
                             databaseReference.child(user.getUid()).child("imageUrl").setValue(uploadedImageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
