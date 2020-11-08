@@ -44,7 +44,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DashboardActivity extends AppCompatActivity {
+    private List<UserInformation> userList;
     private ImageView profile_picture;
     private UploadTask uploadTask;
     private Uri profilPictureUri;
@@ -60,6 +64,7 @@ public class DashboardActivity extends AppCompatActivity {
     private static final String TAG = "checkfixes";
     private Toolbar toolbar;
     private static final int PICK_IMAGE_REQUEST = 1;
+    private FirebaseStorage firebaseStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +85,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         String email = user.getEmail();
         userEmail.setText(email);
-        if(!setUserProfilePicture()){
+        if (!setUserProfilePicture()) {
             Toast.makeText(this, "Please Upload you Profile Picture", Toast.LENGTH_SHORT).show();
         }
 
@@ -131,7 +136,6 @@ public class DashboardActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d(TAG, "onDataChange: Going To Retrive Data Of Book From Firebases");
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     final UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
                     String userId = userInformation.getUserId();
@@ -144,6 +148,7 @@ public class DashboardActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
@@ -151,15 +156,23 @@ public class DashboardActivity extends AppCompatActivity {
         });
         return isChanged[0];
     }
+
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getApplicationContext().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(contentResolver.getType(profilPictureUri));
     }
-    private void uploadUserProfilePictureToDatabase() {
-        if (profilPictureUri != null) {
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(profilPictureUri));
 
+    private void uploadUserProfilePictureToDatabase(Uri profilPictureUri) {
+        if (profilPictureUri != null) {
+
+            final String url = checkIfUserExists();
+            Log.d(TAG, "uploadUserProfilePictureToDatabase: "+url);
+            if(url == "NotExists"){
+                Toast.makeText(this, "Can't Proceed : Your Information is not in database please provide it", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(profilPictureUri));
             fileReference.putFile(profilPictureUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -167,50 +180,81 @@ public class DashboardActivity extends AppCompatActivity {
 
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
-                            final String url = uri.getResult().toString();
-                            databaseReference.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    Log.d(TAG, "onDataChange: Going To Retrive Data Of Book From Firebases");
-                                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                                        final UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
-                                        String userId = userInformation.getUserId();
-                                        if (userId == user.getUid()) {
-                                            databaseReference.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                    for (DataSnapshot child: snapshot.getChildren()) {
-                                                        Log.d("User key", child.getKey());
-                                                        Log.d("User ref", child.getRef().toString());
-                                                        Log.d("User val", child.getValue().toString());
-                                                        Toast.makeText(DashboardActivity.this, child.getKey(), Toast.LENGTH_LONG).show();
-                                                    }
-                                                }
+                            final String uploadedImageUrl = uri.getResult().toString();
 
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                                }
-                                            });
-                                        }
+                            if(url.length() > 10){
+                                //this means there is an image already in database
+                                storageReference = firebaseStorage.getReferenceFromUrl(url);
+                                storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(DashboardActivity.this, "Your Image has been removed from database", Toast.LENGTH_SHORT).show();
                                     }
-                                }
+                                });
+                            }
+                            databaseReference.child(user.getUid()).child("imageUrl").setValue(uploadedImageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(DashboardActivity.this, "Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(DashboardActivity.this, "Failed To uplaod", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
                     }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Failed To Upload Check your Connection", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), "Failed To Upload Check your Connection", Toast.LENGTH_SHORT).show();
+                }
+            });
 
         } else {
             Toast.makeText(getApplicationContext(), "No File Selected", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public boolean deleteOldImage(String url) {
+        if (url != "None" && url != null && url != "") {
+            Log.d(TAG, "deleteOldImage: Inside Delete Image : " + url);
+            StorageReference photoRef = firebaseStorage.getReferenceFromUrl(url);
+
+            if (photoRef != null) {
+                photoRef.delete();
+                return true;
+            } else return false;
+        } else return false;
+    }
+
+    String checkIfUserExists() {
+        userList = new ArrayList<UserInformation>();
+        final String[] url = {"NotExist"};
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "Getting all Objects");
+
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    final UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
+                    userList.add(userInformation);
+                    if (userInformation.getUserId() == user.getUid()) {
+                        Log.d(TAG, "onDataChange: Adding User : "+userInformation.getUserId());
+                        url[0] = userInformation.getImageUrl();
+                        break;
+                    }
+                    Log.d(TAG, "onDataChange: Cheking user : "+userInformation.getImageUrl());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        return url[0];
     }
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -220,13 +264,11 @@ public class DashboardActivity extends AppCompatActivity {
             profilPictureUri = data.getData();
             //picaso is used to get images from devices
             Picasso.get().load(profilPictureUri).into(profile_picture);
-            saveImageTodatabase(profilPictureUri);
-            uploadUserProfilePictureToDatabase();
+            if (profilPictureUri != null) {
+                uploadUserProfilePictureToDatabase(profilPictureUri);
+            } else
+                Toast.makeText(this, "Please Upload Profile Picture, It is not saved try again", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void saveImageTodatabase(Uri profilPictureUri) {
-
     }
 
     @Override
@@ -252,9 +294,10 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
     }
-    public void logout(View view){
+
+    public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 }
