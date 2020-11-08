@@ -134,7 +134,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    final UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
+                    UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
                     String userId = userInformation.getUserId();
                     String url = userInformation.getImageUrl();
                     Log.d(TAG, "onDataChange: User Information : "+userInformation.getUserName()+"     "+url);
@@ -178,17 +178,6 @@ public class DashboardActivity extends AppCompatActivity {
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             final String uploadedImageUrl = uri.getResult().toString();
-
-                            if(url.length() > 10){
-                                //this means there is an image already in database
-                                storageReference = firebaseStorage.getReferenceFromUrl(url);
-                                storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(DashboardActivity.this, "Your Image has been removed from database", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
 
                             databaseReference.child(user.getUid()).child("imageUrl").setValue(uploadedImageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -236,7 +225,7 @@ public class DashboardActivity extends AppCompatActivity {
                 Log.d(TAG, "Getting all Objects");
 
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    final UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
+                    UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
                     userList.add(userInformation);
                     if (userInformation.getUserId() == user.getUid()) {
                         Log.d(TAG, "onDataChange: Adding User : "+userInformation.getUserId());
