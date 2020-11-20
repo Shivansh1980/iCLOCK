@@ -5,10 +5,11 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/jwwkgj"
+    android:background="@drawable/iphone_6__7__8_plus_1"
     tools:context=".AddBookFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/book_detail"
         android:layout_width="wrap_content"
@@ -17,20 +18,20 @@
         android:text="Book Details"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.084" />
 
     <ScrollView
-        android:layout_width="367dp"
-        android:layout_height="489dp"
-        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
+        android:layout_width="372dp"
+        android:layout_height="461dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book_detail">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,22 +39,35 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/book_name"
+                android:id="@+id/owner_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="57dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5sp"
                 android:layout_weight="2"
                 android:ems="10"
                 android:fontFamily="@font/aclonica"
-                android:hint="Enter Book Name"
+                android:hint="Owner Name"
+                android:inputType="textPersonName"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/book_name"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="5sp"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/aclonica"
+                android:hint="Book Name"
                 android:inputType="textPersonName"
                 android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/book_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="119dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5sp"
                 android:layout_weight="6"
@@ -65,43 +79,22 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/publishing_year"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:hint="Publishing Year"
-                android:inputType="date"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/book_for_semester"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:ems="10"
-                android:hint="Book for Semester"
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
-
-            <EditText
                 android:id="@+id/book_for_branch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="57dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5sp"
                 android:layout_weight="2"
                 android:ems="10"
-                android:hint="For which branch the book is ?"
+                android:fontFamily="@font/aclonica"
+                android:hint="Edition"
                 android:inputType="textPersonName"
                 android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/price"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="57dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5sp"
                 android:layout_weight="2"
@@ -109,19 +102,6 @@
                 android:fontFamily="@font/aclonica"
                 android:hint="Price"
                 android:inputType="number"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/owner_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Enter Owner Name"
-                android:inputType="textPersonName"
                 android:textSize="15sp" />
 
             <EditText
@@ -133,20 +113,8 @@
                 android:layout_weight="2"
                 android:ems="10"
                 android:fontFamily="@font/aclonica"
-                android:hint="Enter Contact Number"
+                android:hint="Contact Number"
                 android:inputType="phone"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/optional_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
-                android:ems="10"
-                android:fontFamily="@font/aclonica"
-                android:hint="Optional Details"
-                android:inputType="textPersonName"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -156,16 +124,16 @@
         android:id="@+id/submit_btn"
         android:layout_width="135dp"
         android:layout_height="54dp"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/button_invisible_background"
         android:fontFamily="@font/aclonica"
         android:text="@string/submit"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
+        app:layout_constraintVertical_bias="0.93" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

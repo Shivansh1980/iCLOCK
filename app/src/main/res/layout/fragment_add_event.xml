@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/jwwkgj"
+    android:background="@drawable/signinbackground"
     tools:context=".AddEventFragment">
 
     <TextView
         android:id="@+id/EventDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/event_details"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="335dp"
-        android:layout_height="498dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="384dp"
+        android:layout_height="502dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231">
+        app:layout_constraintVertical_bias="0.53">
 
         <EditText
             android:id="@+id/event_name"
-            android:layout_width="308dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
             android:layout_weight="2"
             android:ems="10"
+            android:fontFamily="@font/aclonica"
+            android:hint="Event Name"
             android:inputType="textPersonName"
             android:textSize="15sp" />
 
@@ -51,50 +53,56 @@
             android:layout_weight="2"
             android:ems="10"
             android:fontFamily="@font/aclonica"
-            android:hint="Enter Owner Name"
+            android:hint="Owner Name"
             android:inputType="textPersonName"
             android:textSize="15sp" />
 
         <EditText
             android:id="@+id/description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="24dp"
             android:layout_marginTop="5sp"
             android:layout_marginBottom="5sp"
             android:layout_weight="6"
             android:ems="10"
             android:fontFamily="@font/aclonica"
             android:gravity="start"
-            android:hint="write short description..."
+            android:hint="Description..."
             android:inputType="textPersonName"
             android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/event_start_date"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:layout_marginBottom="5sp"
-            android:layout_weight="2"
-            android:ems="10"
-            android:fontFamily="@font/aclonica"
-            android:hint="Event Date"
-            android:importantForAutofill="no"
-            android:inputType="date"
-            android:textSize="15sp" />
+            android:layout_height="58dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/event_end_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:layout_marginBottom="5sp"
-            android:layout_weight="2"
-            android:ems="10"
-            android:fontFamily="@font/aclonica"
-            android:hint="Registration End Date"
-            android:inputType="date"
-            android:textSize="15sp" />
+            <EditText
+                android:id="@+id/event_start_date"
+                android:layout_width="181dp"
+                android:layout_height="57dp"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="5sp"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/aclonica"
+                android:hint="Event Date"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/event_end_date"
+                android:layout_width="270dp"
+                android:layout_height="57dp"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="5sp"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/aclonica"
+                android:hint="Registration Last Date"
+                android:inputType="date"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/certification_available"
@@ -105,7 +113,7 @@
             android:layout_weight="2"
             android:ems="10"
             android:fontFamily="@font/aclonica"
-            android:hint="Certification yes or no"
+            android:hint="Certification Information"
             android:inputType="textPersonName"
             android:textSize="15sp" />
 
@@ -123,14 +131,15 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/optional_detail"
+            android:id="@+id/regi_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5sp"
             android:layout_marginBottom="5sp"
+            android:layout_weight="2"
             android:ems="10"
             android:fontFamily="@font/aclonica"
-            android:hint="Optional Details"
+            android:hint="Registration link"
             android:inputType="textPersonName"
             android:textSize="15sp" />
 
@@ -140,6 +149,7 @@
         android:id="@+id/submit_btn"
         android:layout_width="135dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/facebook_icon___copy"
         android:fontFamily="@font/aclonica"
         android:text="@string/submit"
@@ -147,9 +157,6 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

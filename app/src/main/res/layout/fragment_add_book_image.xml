@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/jwwkgj"
+    android:background="@drawable/iphone_6__7__8_plus_1"
     tools:context=".AddBookImageFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -48,7 +48,7 @@
         android:paddingLeft="3sp"
         android:paddingRight="3sp"
         android:text="Choose File"
-        android:textColor="@color/design_default_color_secondary_variant"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/next_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,7 @@
         android:paddingRight="3sp"
         android:shadowColor="#018786"
         android:text="Next"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/primary_text_light_nodisable"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
