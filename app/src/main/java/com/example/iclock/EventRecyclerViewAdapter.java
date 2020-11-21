@@ -110,8 +110,8 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             super(itemView);
             //this is the itemView inflated from our event_item_layout and that's why we can get
             // id's by using ths itemView as reference as shown
-            eventName = itemView.findViewById(R.id.event_name_card);
-            startDate = itemView.findViewById(R.id.start_date);
+//            eventName = itemView.findViewById(R.id.event_name_card);
+//            startDate = itemView.findViewById(R.id.start_date);
             eventImage = itemView.findViewById(R.id.event_image);
             mView = itemView;
         }

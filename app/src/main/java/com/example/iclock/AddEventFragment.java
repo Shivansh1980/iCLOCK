@@ -102,7 +102,7 @@ public class AddEventFragment extends Fragment {
         end_date = root.findViewById(R.id.event_end_date);
         contact_number = root.findViewById(R.id.contact_number);
         certification = root.findViewById(R.id.certification_available);
-        optional_details = root.findViewById(R.id.optional_detail);
+//        optional_details = root.findViewById(R.id.optional_detail);
 
 
         //storage references and creating the directories in firebase using below two lines
