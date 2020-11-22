@@ -208,7 +208,6 @@ public class AddEventFragment extends Fragment {
         String isCertification = certification.getText().toString();
         String userId = mAuth.getCurrentUser().getUid();
         String contact = contact_number.getText().toString();
-        String extraDetails = optional_details.getText().toString();
         String eventOwnerName = event_owner_name.getText().toString();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
@@ -244,9 +243,6 @@ public class AddEventFragment extends Fragment {
             if(userInfo != null) {
                 createUserEvent.setUserInfo(userInfo);
             }
-
-            if (extraDetails != "" || extraDetails != null)
-                createUserEvent.setOtherDetailOptional(extraDetails);
             return createUserEvent;
         } else
             return null;
