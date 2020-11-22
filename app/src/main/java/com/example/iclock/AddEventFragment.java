@@ -217,7 +217,9 @@ public class AddEventFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userInfo = dataSnapshot.getValue(UserInformation.class);
-                Log.d("TAG", userInfo.getImageUrl());
+                if(userInfo != null) {
+                    Log.d("TAG", userInfo.getImageUrl());
+                }
             }
 
             @Override
@@ -249,8 +251,8 @@ public class AddEventFragment extends Fragment {
                 createUserEvent.setUserInfo(userInfo);
             }
             return createUserEvent;
-        } else
-            return null;
+
+        } else return null;
     }
 
 
