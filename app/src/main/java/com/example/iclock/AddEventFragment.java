@@ -240,7 +240,12 @@ public class AddEventFragment extends Fragment {
             createUserEvent.setIsCertificationAvailable(isCertification);
             createUserEvent.setUserId(userId);
             createUserEvent.setEventOwner(eventOwnerName);
+
             if(userInfo != null) {
+                createUserEvent.setUserInfo(userInfo);
+            }
+            else {
+                userInfo = null;
                 createUserEvent.setUserInfo(userInfo);
             }
             return createUserEvent;
