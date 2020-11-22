@@ -40,7 +40,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/book_details_name"
+                android:id="@+id/book_owner_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -50,7 +50,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_details_text_event_name"
+                android:id="@+id/event_details_event_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -86,7 +86,7 @@
             <TextView
                 android:id="@+id/event_details_text_description"
                 android:layout_width="match_parent"
-                android:layout_height="82dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:background="@android:drawable/screen_background_light_transparent"
                 android:text="Description :\n"
@@ -150,7 +150,7 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/book_details_image"
+        android:id="@+id/event_details_image"
         android:layout_width="match_parent"
         android:layout_height="276dp"
         android:layout_margin="8dp"

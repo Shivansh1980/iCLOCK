@@ -3,7 +3,6 @@ package com.example.iclock;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,42 +10,42 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.iclock.dummy.UserInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import static android.app.Activity.RESULT_OK;
 
 public class AddEventFragment extends Fragment {
 
     Calendar myCalendar;
     EditText event_name;
+    EditText event_owner_name;
     EditText description;
     EditText start_date;
     EditText end_date;
@@ -68,6 +67,7 @@ public class AddEventFragment extends Fragment {
     private StorageTask uploadTask; //About this described below
     private ProgressDialog progressDialog;
     private NavController navController;
+    private UserInformation userInfo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,12 +91,13 @@ public class AddEventFragment extends Fragment {
 
         //Image Chooseing area
         Button submit = root.findViewById(R.id.submit_btn);
-        file_name = root.findViewById(R.id.event_name);
+        file_name = root.findViewById(R.id.event_details_event_name);
         image_after_upload = root.findViewById(R.id.image_after_upload);
         image_uri = Uri.parse(getArguments().getString("Image-Uri"));
 
         //All text Fields of input
-        event_name = root.findViewById(R.id.event_name);
+        event_name = root.findViewById(R.id.event_details_event_name);
+        event_owner_name = root.findViewById(R.id.owner_name);
         description = root.findViewById(R.id.description);
         start_date = root.findViewById(R.id.event_start_date);
         end_date = root.findViewById(R.id.event_end_date);
@@ -208,6 +209,25 @@ public class AddEventFragment extends Fragment {
         String userId = mAuth.getCurrentUser().getUid();
         String contact = contact_number.getText().toString();
         String extraDetails = optional_details.getText().toString();
+        String eventOwnerName = event_owner_name.getText().toString();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference uidRef = rootRef.child("User").child(userId);
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userInfo = dataSnapshot.getValue(UserInformation.class);
+                Log.d("TAG", userInfo.getImageUrl());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("TAG", databaseError.getMessage()); //Don't ignore errors!
+            }
+        };
+        uidRef.addListenerForSingleValueEvent(valueEventListener);
+
 
         int isAllRight = performInfoCheck(eventName, eventDescription, eventStartDate, eventEndDate, contact, isCertification);
 
@@ -220,6 +240,10 @@ public class AddEventFragment extends Fragment {
             createUserEvent.setContact(contact);
             createUserEvent.setIsCertificationAvailable(isCertification);
             createUserEvent.setUserId(userId);
+            createUserEvent.setEventOwner(eventOwnerName);
+            if(userInfo != null) {
+                createUserEvent.setUserInfo(userInfo);
+            }
 
             if (extraDetails != "" || extraDetails != null)
                 createUserEvent.setOtherDetailOptional(extraDetails);

@@ -1,5 +1,7 @@
 package com.example.iclock;
 
+import com.example.iclock.dummy.UserInformation;
+
 import java.io.Serializable;
 
 public class CreateUserEvent implements Serializable {
@@ -12,6 +14,15 @@ public class CreateUserEvent implements Serializable {
     private String isCertificationAvailable;
     private String otherDetailOptional;
     private String imageUrl;
+    private UserInformation userInfo;
+
+    public UserInformation getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInformation userInfo) {
+        this.userInfo = userInfo;
+    }
 
     public String getContact() {
         return contact;

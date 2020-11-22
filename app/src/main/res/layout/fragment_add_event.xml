@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.53">
 
         <EditText
-            android:id="@+id/event_name"
+            android:id="@+id/event_details_event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5sp"

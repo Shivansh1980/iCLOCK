@@ -33,9 +33,9 @@ public class BookDetails extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_book_details, container, false);
-        bookName = root.findViewById(R.id.book_details_name);
+        bookName = root.findViewById(R.id.book_owner_name);
         bookDescription = root.findViewById(R.id.book_details_text_description);
-        bookImage = root.findViewById(R.id.book_details_image);
+        bookImage = root.findViewById(R.id.event_details_image);
         bookPrice = root.findViewById(R.id.book_details_price);
         contact = root.findViewById(R.id.book_details_contactno);
 

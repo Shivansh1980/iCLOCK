@@ -1,6 +1,5 @@
 package com.example.iclock;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +14,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iclock.dummy.UserInformation;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,6 +35,8 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     private List<CreateUserEvent> userEvents;
     private List<CreateUserEvent> userEventsFullList;//to store all events for search
     private NavController navController;
+    private DatabaseReference databaseReference;
+    private StorageReference storageReference;
 
     public EventRecyclerViewAdapter(Context context, List<CreateUserEvent> userEvents, NavController navController) {
         this.userEvents = userEvents;
@@ -40,6 +44,8 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         this.navController = navController;
         userEventsFullList = new ArrayList<>();
         userEventsFullList.addAll(userEvents);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        storageReference = FirebaseStorage.getInstance().getReference("User_Profile_Pictures");
     }
 
     //whenever RecyclerView wants the item it first call onCreateViewHolder and this onCreateViewHolder
@@ -65,19 +71,34 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         //userEvent is the array of CreateUserEvent Object
 
         final CreateUserEvent createUserEvent = userEvents.get(position);
+        final UserInformation userInfo = userEvents.get(position).getUserInfo();
+
         if (userEvents.get(position) == null) {
             Toast.makeText(context, "Founds Null Object", Toast.LENGTH_SHORT).show();
             return;
         }
-        holder.eventName.setText("Event Name:\n");
+        holder.eventName.setText("Event Name:");
         holder.eventName.append(userEvents.get(position).getEventName());
-        holder.startDate.setText("start date:\n");
-        holder.startDate.append(userEvents.get(position).getEventStartdate());
+        holder.eventOwnerName.setText("Owner Name : ");
+        holder.eventOwnerName.append(userEvents.get(position).getEventOwner());
+
+        if(userInfo != null ) {
+            if (userInfo.getImageUrl() == null || userInfo.getImageUrl() == "None" || userInfo.getImageUrl() == "") {
+                Toast.makeText(context, "Owner Image Not Available", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Picasso.get().load(userInfo.getImageUrl())
+                        .fit()
+                        .centerCrop()
+                        .into(holder.ownerImage);
+            }
+        }
 
         Picasso.get().load(userEvents.get(position).getImageUrl()) //userevents.get(position) will give the clicked object by user onclick the card
                     .fit()
                     .centerCrop()
                     .into(holder.eventImage);
+
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -101,8 +122,9 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView eventName;
-        TextView startDate;
         ImageView eventImage;
+        TextView eventOwnerName;
+        ImageView ownerImage;
         View mView;
 
         //this View is coming from onCreatedViewHolder.
@@ -110,9 +132,10 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             super(itemView);
             //this is the itemView inflated from our event_item_layout and that's why we can get
             // id's by using ths itemView as reference as shown
-//            eventName = itemView.findViewById(R.id.event_name_card);
-//            startDate = itemView.findViewById(R.id.start_date);
+            eventName = itemView.findViewById(R.id.event_name);
             eventImage = itemView.findViewById(R.id.event_image);
+            eventOwnerName = itemView.findViewById(R.id.event_owner_name);
+            ownerImage = itemView.findViewById(R.id.event_owner_profile_pic);
             mView = itemView;
         }
     }

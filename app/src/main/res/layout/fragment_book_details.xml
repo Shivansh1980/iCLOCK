@@ -48,7 +48,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/book_details_name"
+                android:id="@+id/book_owner_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -61,7 +61,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/book_details_image"
+        android:id="@+id/event_details_image"
         android:layout_width="match_parent"
         android:layout_height="276dp"
         android:layout_margin="8sp"

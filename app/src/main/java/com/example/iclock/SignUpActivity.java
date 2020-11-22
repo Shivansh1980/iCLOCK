@@ -91,6 +91,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void openDashboardActivity() {
+        //write the code for taking the following details :
+        //1. userProfile pic
         Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
         startActivity(intent);
     }

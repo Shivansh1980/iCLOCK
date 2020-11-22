@@ -17,6 +17,7 @@ public class EventDetails extends Fragment {
     private Context context;
     private CreateUserEvent createUserEvent;
     private TextView event_name;
+    private TextView event_owner_name;
     private ImageView event_image;
     private TextView event_description;
     private TextView event_start_date;
@@ -51,9 +52,10 @@ public class EventDetails extends Fragment {
         View root = inflater.inflate(R.layout.fragment_event_details, container, false);
         context = container.getContext();
 
-        event_name = root.findViewById(R.id.event_details_text_event_name);
+        event_name = root.findViewById(R.id.event_details_event_name);
+        event_owner_name = root.findViewById(R.id.book_owner_name);
         event_description = root.findViewById(R.id.event_details_text_description);
-        event_image = root.findViewById(R.id.book_details_image);
+        event_image = root.findViewById(R.id.event_details_image);
         event_start_date = root.findViewById(R.id.event_details_registration_start_date);
         event_end_date = root.findViewById(R.id.event_details_registration_end_date);
         certification = root.findViewById(R.id.event_details_certification);
@@ -64,6 +66,7 @@ public class EventDetails extends Fragment {
                 .fit()
                 .centerCrop()
                 .into(event_image);
+        event_owner_name.setText(createUserEvent.getEventOwner());
         event_name.setText(createUserEvent.getEventName());
         event_description.setTextColor(context.getResources().getColor(R.color.colorPrimary));
         event_description.append(createUserEvent.getDescription());
