@@ -41,12 +41,14 @@
 
     <RelativeLayout
         android:id="@+id/all_cards_of_dashboard"
-        android:layout_width="391dp"
-        android:layout_height="419dp"
+        android:layout_width="398dp"
+        android:layout_height="439dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:id="@+id/event_linear_layout"
