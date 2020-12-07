@@ -28,10 +28,11 @@
 
     <ImageView
         android:id="@+id/image_after_upload"
-        android:layout_width="315dp"
-        android:layout_height="294dp"
+        android:layout_width="329dp"
+        android:layout_height="265dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:background="@android:color/white"
+        android:backgroundTint="#368BC34A"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/choose_file_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,27 +42,27 @@
     <Button
         android:id="@+id/choose_file_btn"
         android:layout_width="182dp"
-        android:layout_height="73dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="440dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:background="@drawable/button_shape"
         android:fontFamily="@font/aclonica"
         android:paddingLeft="3sp"
         android:paddingRight="3sp"
         android:text="Choose File"
         android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="24sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/next_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/next_btn"
         android:layout_width="159dp"
         android:layout_height="50dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:background="@android:color/holo_green_dark"
         android:fontFamily="@font/aclonica"
         android:paddingLeft="3sp"
         android:paddingRight="3sp"
@@ -71,8 +72,9 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
+        app:layout_constraintVertical_bias="0.935" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

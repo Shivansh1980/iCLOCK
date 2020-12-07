@@ -91,9 +91,11 @@ public class AddBookFragment extends Fragment {
         //All text Fields of input
         book_name = root.findViewById(R.id.book_name);
         book_description = root.findViewById(R.id.book_description);
+        publishing_year = root.findViewById(R.id.book_publishing_year);
         price = root.findViewById(R.id.price);
         owner_name = root.findViewById(R.id.owner_name);
         contact_number = root.findViewById(R.id.contact_number);
+        optional_details = root.findViewById(R.id.book_optional_details);
 //        publishing_year = root.findViewById(R.id.publishing_year);
 //        optional_details = root.findViewById(R.id.optional_detail);
 //        bookForSemester = root.findViewById(R.id.book_for_semester);
@@ -219,6 +221,7 @@ public class AddBookFragment extends Fragment {
             createUserBook.setPublishingYear(Publishing_year);
             createUserBook.setContact(contact);
             createUserBook.setUserId(userId);
+            Log.d(TAG, "getUserInformationObject: UseriD : "+userId);
             createUserBook.setBookForSemester(bookSemester);
             createUserBook.setBookForBranch(bookBranch);
 

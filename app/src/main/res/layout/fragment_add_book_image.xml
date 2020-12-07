@@ -28,9 +28,10 @@
 
     <ImageView
         android:id="@+id/image_after_upload"
-        android:layout_width="308dp"
+        android:layout_width="wrap_content"
         android:layout_height="305dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:background="@android:color/holo_red_dark"
+        android:backgroundTint="#6BEDC9C9"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/choose_file_btn1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,9 +42,9 @@
 
     <Button
         android:id="@+id/choose_file_btn1"
-        android:layout_width="203dp"
-        android:layout_height="75dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:layout_width="178dp"
+        android:layout_height="61dp"
+        android:background="@drawable/button_shape"
         android:fontFamily="@font/aclonica"
         android:paddingLeft="3sp"
         android:paddingRight="3sp"
@@ -54,13 +55,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        app:layout_constraintVertical_bias="0.97" />
 
     <Button
         android:id="@+id/next_btn"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:background="@android:color/holo_green_dark"
         android:fontFamily="@font/aclonica"
         android:paddingLeft="3sp"
         android:paddingRight="3sp"

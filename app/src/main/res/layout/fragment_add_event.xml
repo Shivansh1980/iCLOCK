@@ -16,14 +16,17 @@
         android:text="@string/event_details"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="384dp"
-        android:layout_height="502dp"
+        android:layout_width="398dp"
+        android:layout_height="515dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +95,7 @@
 
             <EditText
                 android:id="@+id/event_end_date"
-                android:layout_width="270dp"
+                android:layout_width="wrap_content"
                 android:layout_height="57dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5sp"
@@ -147,16 +150,19 @@
 
     <Button
         android:id="@+id/submit_btn"
-        android:layout_width="135dp"
-        android:layout_height="54dp"
+        android:layout_width="178dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/facebook_icon___copy"
+        android:background="@android:color/holo_green_dark"
         android:fontFamily="@font/aclonica"
         android:text="@string/submit"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EventDetail"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
