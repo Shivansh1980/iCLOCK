@@ -66,7 +66,7 @@
         android:layout_margin="8sp"
         android:layout_weight="5"
         android:background="#8AAAA8A8"
-        android:rotationX="33"
+        android:rotationX="7"
         android:src="@drawable/event_card_shadow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
