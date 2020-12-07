@@ -62,8 +62,8 @@ public class BookRecyclerViewAdapter extends RecyclerView.Adapter<BookRecyclerVi
         Log.d(TAG, "onBindViewHolder: Name of the Book : "+bookList.get(position).getBookName());
 
         holder.mItem = bookList.get(position);
-        holder.book_name.setText(bookList.get(position).getBookName());
-        holder.book_description.setText(bookList.get(position).getBookDescription());
+        holder.book_name.setText("Name: "+bookList.get(position).getBookName());
+        holder.book_description.setText("Description: "+bookList.get(position).getBookDescription());
 
         Log.d(TAG, "onBindViewHolder: Book List Image Url : "+bookList.get(position).getBookImageUrl());
 
