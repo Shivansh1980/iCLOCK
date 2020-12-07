@@ -77,9 +77,9 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             Toast.makeText(context, "Founds Null Object", Toast.LENGTH_SHORT).show();
             return;
         }
-        holder.eventName.setText("Event Name:");
+        holder.eventName.setText("Event: ");
         holder.eventName.append(userEvents.get(position).getEventName());
-        holder.eventOwnerName.setText("Owner Name : ");
+        holder.eventOwnerName.setText("Owner: ");
         holder.eventOwnerName.append(userEvents.get(position).getEventOwner());
 
         if(userInfo != null ) {

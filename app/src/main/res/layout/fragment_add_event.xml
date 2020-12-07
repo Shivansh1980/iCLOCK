@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signinbackground"
+    android:background="@drawable/iphone_6__7__8_plus__11"
     tools:context=".AddEventFragment">
 
     <TextView

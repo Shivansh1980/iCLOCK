@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -105,7 +106,16 @@ public class DashboardFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.menu_share_button:
-                Toast.makeText(context, "This Has Not Been Coded Yet", Toast.LENGTH_SHORT).show();
+                Intent sharingIntant = new Intent(Intent.ACTION_SEND);
+                sharingIntant.setType("text/plain");
+                String sharebody = "Download app from here 'https://drive.google.com/drive/folders/18z2eUdiFW44RocNvrrR4X1An0ITKXIzH?usp=sharing'";
+                String shareSubject = "ICLOCK Application";
+
+                sharingIntant.putExtra(Intent.EXTRA_TEXT,sharebody);
+                sharingIntant.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
+                startActivity(Intent.createChooser(sharingIntant,"Share Using"));
+
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
