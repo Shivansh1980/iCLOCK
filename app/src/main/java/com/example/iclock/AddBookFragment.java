@@ -96,9 +96,7 @@ public class AddBookFragment extends Fragment {
         owner_name = root.findViewById(R.id.owner_name);
         contact_number = root.findViewById(R.id.contact_number);
         optional_details = root.findViewById(R.id.book_optional_details);
-//        publishing_year = root.findViewById(R.id.publishing_year);
-//        optional_details = root.findViewById(R.id.optional_detail);
-//        bookForSemester = root.findViewById(R.id.book_for_semester);
+        bookForSemester = root.findViewById(R.id.book_for_semester);
         bookForBranch = root.findViewById(R.id.book_for_branch);
 
 
@@ -208,6 +206,9 @@ public class AddBookFragment extends Fragment {
         String extraDetails = optional_details.getText().toString();
         String bookSemester = bookForSemester.getText().toString();
         String bookBranch = bookForBranch.getText().toString();
+        if(extraDetails == null ){
+            extraDetails = "";
+        }
 
         int isAllRight = performInfoCheck(bookName, bookDescription, Price,  contact, Publishing_year);
 

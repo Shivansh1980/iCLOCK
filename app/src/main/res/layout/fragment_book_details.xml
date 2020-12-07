@@ -27,7 +27,6 @@
             android:layout_marginRight="2sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="@drawable/facebook_icon___copy"
             android:src="@drawable/event_card_shadow" />
 
         <LinearLayout
@@ -66,6 +65,8 @@
         android:layout_height="276dp"
         android:layout_margin="8sp"
         android:layout_weight="5"
+        android:background="#8AAAA8A8"
+        android:rotationX="33"
         android:src="@drawable/event_card_shadow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

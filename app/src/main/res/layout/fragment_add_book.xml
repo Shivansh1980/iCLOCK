@@ -84,6 +84,7 @@
                 android:layout_height="64dp"
                 android:layout_weight="2"
                 android:ems="10"
+                android:fontFamily="@font/aclonica"
                 android:hint="Publishing Year"
                 android:inputType="textPersonName" />
 
@@ -99,6 +100,16 @@
                 android:hint="Edition"
                 android:inputType="textPersonName"
                 android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/book_for_semester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/aclonica"
+                android:hint="Book For Semester"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/price"
@@ -129,7 +140,7 @@
             <EditText
                 android:id="@+id/book_optional_details"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="64sp"
                 android:layout_weight="2"
                 android:ems="10"
                 android:fontFamily="@font/aclonica"
