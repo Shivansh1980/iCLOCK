@@ -48,7 +48,7 @@ public class AddBookFragment extends Fragment {
     EditText bookForBranch;
 
     public static final String TAG="CheckForDatabase";
-    private CreateBook createUserBook;
+    private CreateBook createBook;
     private static final int PICK_IMAGE_REQUEST = 1;
     private FirebaseAuth mAuth;
     private Uri image_uri;
@@ -110,8 +110,9 @@ public class AddBookFragment extends Fragment {
                 if (uploadTask != null && uploadTask.isInProgress()) {
                     Toast.makeText(context, "Upload Already in Progress", Toast.LENGTH_SHORT).show();
                 } else {
-                    createUserBook = getUserInformationObject();
-                    if (createUserBook != null) {
+                    createBook = getUserInformationObject();
+                    Log.d(TAG, "getUserInformationObject: UseriD : "+createBook.getUserId());
+                    if (createBook != null) {
                         uploadUserInformationToDatabase();
                         progressDialog.show();
                     }
@@ -158,12 +159,12 @@ public class AddBookFragment extends Fragment {
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uri.isComplete()) ;
                             String url = uri.getResult().toString();
-                            createUserBook.setBookImageUrl(url);
+                            createBook.setBookImageUrl(url);
 
 
                             String uploadId = databaseReference.push().getKey();
 
-                            databaseReference.child("Books_Details").child(uploadId).setValue(createUserBook).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            databaseReference.child("Books_Details").child(uploadId).setValue(createBook).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(context, "Book added successfully", Toast.LENGTH_SHORT).show();
@@ -176,7 +177,7 @@ public class AddBookFragment extends Fragment {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(context, "Failed to upload details", Toast.LENGTH_SHORT).show();
-                                    StorageReference photoref = mFirebaseStorage.getReferenceFromUrl( createUserBook.getBookImageUrl() );
+                                    StorageReference photoref = mFirebaseStorage.getReferenceFromUrl( createBook.getBookImageUrl() );
                                     photoref.delete();
                                     progressDialog.dismiss();
                                 }
@@ -222,7 +223,6 @@ public class AddBookFragment extends Fragment {
             createUserBook.setPublishingYear(Publishing_year);
             createUserBook.setContact(contact);
             createUserBook.setUserId(userId);
-            Log.d(TAG, "getUserInformationObject: UseriD : "+userId);
             createUserBook.setBookForSemester(bookSemester);
             createUserBook.setBookForBranch(bookBranch);
 

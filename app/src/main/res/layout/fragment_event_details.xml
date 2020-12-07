@@ -5,15 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/iphone_6__7__8_plus__11"
+    android:background="@drawable/background_1"
     tools:context=".EventDetails">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="408dp"
-        android:layout_height="wrap_content"
+        android:layout_width="324dp"
+        android:layout_height="125dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,15 +22,14 @@
         app:layout_constraintVertical_bias="0.0004">
 
         <ImageView
-            android:id="@+id/profile_pic"
+            android:id="@+id/owner_profile_pic"
             android:layout_width="188dp"
-            android:layout_height="95dp"
+            android:layout_height="112dp"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@android:drawable/screen_background_light_transparent"
             android:src="@drawable/event_card_shadow" />
 
         <LinearLayout
@@ -40,7 +39,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/book_owner_name"
+                android:id="@+id/book_details_book_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -151,8 +150,8 @@
 
     <ImageView
         android:id="@+id/event_details_image"
-        android:layout_width="match_parent"
-        android:layout_height="276dp"
+        android:layout_width="349dp"
+        android:layout_height="259dp"
         android:layout_margin="8dp"
         android:layout_weight="5"
         android:src="@drawable/event_card_shadow"

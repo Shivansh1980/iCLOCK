@@ -29,7 +29,7 @@ public class CreateBook implements Serializable {
         this.bookOwner = bookOwner;
     }
 
-    public String UserId() {
+    public String getUserId() {
         return userId;
     }
 

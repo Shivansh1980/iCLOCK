@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/book_image"
-        android:layout_width="155dp"
+        android:layout_width="133dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="5sp"
         android:layout_marginTop="5sp"
