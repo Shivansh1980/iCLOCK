@@ -5,156 +5,135 @@
     android:id="@+id/main_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mitsblurback"
     app:layout_constraintCircleRadius="40sp"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="274dp"
-        android:layout_height="145dp"
+        android:layout_width="413dp"
+        android:layout_height="266dp"
         android:contentDescription="@string/iclok"
-        android:src="@drawable/iclocklogo"
+        android:src="@drawable/background_blue"
+
         app:layout_constraintBottom_toTopOf="@+id/constraint_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.324" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
-        android:layout_width="399dp"
-        android:layout_height="204dp"
+        android:layout_width="310dp"
+        android:layout_height="316dp"
         android:layout_margin="8dp"
+        android:background="@drawable/icon_background"
+        android:elevation="20sp"
+        android:selectAllOnFocus="false"
+        android:fadingEdgeLength="1dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.603"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.479">
+        app:layout_constraintVertical_bias="0.551">
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_weight="2"
-            android:alpha="0.8"
-            android:autofillHints=""
-            android:background="@drawable/shadow"
-            android:drawableStart="@drawable/user_name"
-            android:drawablePadding="10sp"
-            android:elevation="10sp"
-            android:ems="10"
-            android:fontFamily="@font/aclonica"
-
-            android:gravity="start|center_vertical"
-            android:hint="@string/Username"
-            android:inputType="textEmailAddress"
-            android:textAllCaps="false"
-            android:textColorHint="#6C5757"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/password"
+        <TextView
+            android:layout_width="313dp"
+            android:layout_height="37dp"
+            android:paddingTop="10dp"
+            android:text="@string/login"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.611" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_weight="2"
-            android:alpha="0.8"
-            android:autofillHints=""
-            android:background="@drawable/shadow"
-            android:drawableStart="@drawable/lock"
-            android:drawablePadding="10sp"
-            android:elevation="10sp"
-            android:ems="10"
-            android:fontFamily="@font/aclonica"
-            android:hint="@string/login_password"
-            android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#6C5757"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="60dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="5dp"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.764" />
+            app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="280dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="20sp"
-            android:layout_weight="0"
-            android:background="@drawable/button_invisible_background"
-            android:elevation="30sp"
-            android:fadingEdgeLength="3sp"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/log_in"
-            android:textColor="@color/design_default_color_on_secondary"
-            android:textSize="30sp"
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:alpha="0.8"
+                android:ems="10"
+                android:fontFamily="@font/aclonica"
+                android:gravity="start|center_vertical"
+                android:hint="@string/Username"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="5dp"
+            android:textColorHint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.926" />
+            app:layout_constraintVertical_bias="0.613">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:alpha="0.8"
+                android:ems="10"
+                android:fontFamily="@font/aclonica"
+                android:gravity="start|center_vertical"
+                android:hint="@string/login_password"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                android:autofillHints="no" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/or_login_with"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/or"
-        android:textAlignment="center"
-        android:textColor="#090000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/signInButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraint_layout"
-        app:layout_constraintVertical_bias="0.77" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signInButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10sp"
-        android:paddingRight="10sp"
-        android:textColor="#FDFAFA"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraint_layout"
-        app:layout_constraintVertical_bias="0.536">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/googleimg"
-            android:src="@drawable/common_google_signin_btn_icon_dark" />
-    </com.google.android.gms.common.SignInButton>
-
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
         android:orientation="horizontal"
+        android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton"
-        app:layout_constraintVertical_bias="0.317">
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout"
+        app:layout_constraintVertical_bias="0.988">
 
         <Button
             android:id="@+id/sign_up"
@@ -166,6 +145,20 @@
             android:textAlignment="center"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_lodin"
+        android:elevation="20sp"
+        android:fadingEdgeLength="2dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/log_in"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="488dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
