@@ -74,9 +74,10 @@ public class EventFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recycler_view);
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        Animation scale_animation = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
-        scale_animation.setDuration(1000);
-        recyclerView.setAnimation(scale_animation);
+//        Animation scale_animation = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
+//        scale_animation.setDuration(1000);
+//        recyclerView.setAnimation(scale_animation);
+        
         recyclerView.setHasFixedSize(true);
 
         //now lets set the layout in which way recycler view is going to put view like using grid or linealayout
