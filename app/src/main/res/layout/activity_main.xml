@@ -40,6 +40,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="316dp"
+            android:src="@drawable/background_red"
+            c/>
+
         <TextView
             android:layout_width="313dp"
             android:layout_height="37dp"
@@ -157,8 +163,8 @@
         android:text="@string/log_in"
         android:textColor="#FFF"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="488dp" />
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="527dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
