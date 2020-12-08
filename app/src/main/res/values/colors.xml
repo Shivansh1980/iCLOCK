@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#425AEF</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="event_colour">#9FA8DA</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="main_background">@color/ic_launcher_background</color>
 </resources>
