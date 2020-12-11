@@ -98,7 +98,6 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
             }
         });
-
         //setting toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

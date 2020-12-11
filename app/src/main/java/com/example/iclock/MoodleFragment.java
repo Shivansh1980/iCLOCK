@@ -111,7 +111,7 @@ public class MoodleFragment extends Fragment {
 
         });
 
-        moodle.loadUrl("https://www.freeconvert.com/");
+        moodle.loadUrl("http://moodle.mitsgwalior.in/");
 
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
