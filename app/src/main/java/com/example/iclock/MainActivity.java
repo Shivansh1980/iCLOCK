@@ -75,23 +75,14 @@ public class MainActivity extends AppCompatActivity {
         ConstraintLayout username_pass_layout = findViewById(R.id.constraint_layout);
 //        TextView text = findViewById(R.id.iclock_text);
         Button login_button = findViewById(R.id.login_button);
-        SignInButton signin_google = findViewById(R.id.signInButton);
-        TextView orLoginWith = findViewById(R.id.or_login_with);
+
+
 
         //Animating the layouts by using the setanimation method available in java
         username_pass_layout.setAnimation(bottom_animation);
 //        text.setAnimation(top_animation);
         login_button.setAnimation(scale_animation);
-        signin_google.setAnimation(bottom_animation);
-        orLoginWith.setAnimation(scale_animation);
 
-
-        signin_google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
 
         //check already login or not
         if(mAuth.getCurrentUser() != null ){
