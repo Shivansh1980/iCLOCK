@@ -24,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.iclock.dummy.CreateBook;
 import com.example.iclock.dummy.UserInformation;
 import com.google.android.gms.common.internal.Constants;
+import com.google.android.gms.common.internal.FallbackServiceBroker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,6 +66,8 @@ public class DashboardActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private static final int PICK_IMAGE_REQUEST = 1;
     private FirebaseStorage firebaseStorage;
+    private UserInformation userProfile;
+    private String isUserImageExists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,8 @@ public class DashboardActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         profile_picture = headerView.findViewById(R.id.user_profile_picture);
         userEmail = headerView.findViewById(R.id.user_email);
+        isUserImageExists = "NotExists";
+        firebaseStorage = FirebaseStorage.getInstance();
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -85,22 +90,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         String email = user.getEmail();
         userEmail.setText(email);
-        setUserProfilePicture();
 
-        profile_picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                //this will take care that we will see only images when user clicks on choose file
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                //now start activity for result and that will return uri of picked image, which we can get using onActiviityResult
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
-            }
-        });
         //setting toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -126,31 +121,88 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        setUserProfilePicture();
+        profile_picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                //this will take care that we will see only images when user clicks on choose file
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                //now start activity for result and that will return uri of picked image, which we can get using onActiviityResult
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
     }
 
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            profilPictureUri = data.getData();
+            //picaso is used to get images from devices
+            Picasso.get().load(profilPictureUri).into(profile_picture);
+            if (profilPictureUri != null) {
+                Log.d(TAG, "onActivityResult: Passing Uri To CheckIfUserExist method : "+profilPictureUri);
+                checkIfUserExists(profilPictureUri);
+            } else
+                Toast.makeText(this, "Please Upload Profile Picture, It is not saved try again", Toast.LENGTH_SHORT).show();
+        }
+    }
     private void setUserProfilePicture() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("userId").equalTo(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
-                    String userId = userInformation.getUserId();
-                    String url = userInformation.getImageUrl();
-                    Log.d(TAG, "onDataChange: User Information : "+userInformation.getUserName()+"     "+url);
-                    if (userId == user.getUid()) {
-                        Picasso.get().load(userInformation.getImageUrl())
-                                .centerCrop()
-                                .fit()
-                                .into(profile_picture);
-                    }
+                for (DataSnapshot postSnapshot : snapshot.getChildren()){
+                    userProfile = postSnapshot.getValue(UserInformation.class);
+                    Log.d(TAG, "onDataChange: User Information => username : "+userProfile.getUserName()+"id : "+userProfile.getUserId()+" url : "+userProfile.getImageUrl());
+                }
+                if(userProfile.getImageUrl() != null && userProfile.getImageUrl() != "None" && userProfile.getImageUrl() != ""){
+                    Picasso.get().load(userProfile.getImageUrl())
+                            .centerCrop()
+                            .fit()
+                            .into(profile_picture);
+                    Toast.makeText(DashboardActivity.this, "Loaded Profile Picture", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(DashboardActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    void checkIfUserExists(Uri profileUri) {
+        if(profileUri != null) {
+            final Uri pictureUri = profileUri;
+            Log.d(TAG, "checkIfUserExists: "+ pictureUri);
+            databaseReference.orderByChild("userId").equalTo(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        userProfile = postSnapshot.getValue(UserInformation.class);
+                        if (userProfile.getImageUrl() == null || userProfile.getImageUrl() == "" || userProfile.getImageUrl() == "None") {
+                            isUserImageExists = "NotExists";
+                            Log.d(TAG, "checkIfUserExists: "+ isUserImageExists);
+                            uploadUserProfilePictureToDatabase(pictureUri);
+                        } else {
+                            isUserImageExists = userProfile.getImageUrl();
+                            Log.d(TAG, "checkIfUserExists: "+ pictureUri);
+                            Log.d(TAG, "checkIfUserExists: Calling For deleting old image if exists with url : "+isUserImageExists);
+                            deleteOldImage(isUserImageExists);
+                            uploadUserProfilePictureToDatabase(pictureUri);
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(DashboardActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private String getFileExtension(Uri uri) {
@@ -161,10 +213,9 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void uploadUserProfilePictureToDatabase(Uri profilPictureUri) {
         if (profilPictureUri != null) {
-
-            final String url = checkIfUserExists();
-            Log.d(TAG, "uploadUserProfilePictureToDatabase: "+url);
-            if(url == "NotExists"){
+            checkIfUserExists(null);
+            Log.d(TAG, "uploadUserProfilePictureToDatabase: "+isUserImageExists);
+            if(isUserImageExists == "NotExists") {
                 Toast.makeText(this, "Can't Proceed : Your Information is not in database please provide it", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -182,6 +233,10 @@ public class DashboardActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(DashboardActivity.this, "Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
+                                    Picasso.get().load(uploadedImageUrl)
+                                            .centerCrop()
+                                            .fit()
+                                            .into(profile_picture);
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -204,57 +259,16 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public boolean deleteOldImage(String url) {
-        if (url != "None" && url != null && url != "") {
+        if (url != "NotExists" && url.length() >= 15) {
             Log.d(TAG, "deleteOldImage: Inside Delete Image : " + url);
             StorageReference photoRef = firebaseStorage.getReferenceFromUrl(url);
-
+            Log.d(TAG, "deleteOldImage: photoref : "+photoRef);
             if (photoRef != null) {
+                Log.d(TAG, "deleteOldImage: photoref not founds null "+photoRef);
                 photoRef.delete();
                 return true;
             } else return false;
         } else return false;
-    }
-
-    String checkIfUserExists() {
-        userList = new ArrayList<UserInformation>();
-        final String[] url = {"NotExist"};
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d(TAG, "Getting all Objects");
-
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    UserInformation userInformation = postSnapshot.getValue(UserInformation.class);
-                    userList.add(userInformation);
-                    if (userInformation.getUserId() == user.getUid()) {
-                        Log.d(TAG, "onDataChange: Adding User : "+userInformation.getUserId());
-                        url[0] = userInformation.getImageUrl();
-                        break;
-                    }
-                    Log.d(TAG, "onDataChange: Cheking user : "+userInformation.getImageUrl());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-        return url[0];
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
-            profilPictureUri = data.getData();
-            //picaso is used to get images from devices
-            Picasso.get().load(profilPictureUri).into(profile_picture);
-            if (profilPictureUri != null) {
-                uploadUserProfilePictureToDatabase(profilPictureUri);
-            } else
-                Toast.makeText(this, "Please Upload Profile Picture, It is not saved try again", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override

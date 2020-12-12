@@ -63,6 +63,14 @@ public class DashboardFragment extends Fragment {
         ImageButton event_img = root.findViewById(R.id.event_button);
         ImageButton sharing_img = root.findViewById(R.id.sharing_button);
         ImageButton moodle_img = root.findViewById(R.id.moodle_button);
+        Button othertools = root.findViewById(R.id.othertools);
+
+        othertools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().startActivity(new Intent(getActivity(),OtherToolsActivity.class));
+            }
+        });
 
         event_img.setOnClickListener(new View.OnClickListener() {
             @Override
