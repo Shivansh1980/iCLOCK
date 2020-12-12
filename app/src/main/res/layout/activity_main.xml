@@ -43,7 +43,7 @@
         android:layout_height="339dp"
 
         android:background="@drawable/login_field_background"
-        android:elevation="30sp"
+        android:elevation="25sp"
         android:fadingEdgeLength="1dp"
         android:orientation="vertical"
         android:selectAllOnFocus="false"
