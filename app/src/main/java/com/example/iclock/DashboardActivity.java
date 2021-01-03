@@ -21,6 +21,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.iclock.dummy.CreateBook;
 import com.example.iclock.dummy.UserInformation;
 import com.google.android.gms.common.internal.Constants;
@@ -45,6 +51,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +78,8 @@ public class DashboardActivity extends AppCompatActivity {
     private FirebaseStorage firebaseStorage;
     private UserInformation userProfile;
     private String isUserImageExists;
+    private TextView fetched_data_view;
+    private JSONObject json_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,15 +121,34 @@ public class DashboardActivity extends AppCompatActivity {
 //        NavigationUI.setupWithNavController(navigationView, navController);
 //        NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
 
-        Log.d(TAG, "onCreate: drawerlayout created");
         //This will create the message box which you are seeing on the dashboard page of our activity we call it FloatingActionButton.
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                RequestQueue queue = Volley.newRequestQueue(DashboardActivity.this);
+                String url = "https://feeds.citibikenyc.com/stations/stations.json";
+                StringRequest stringrequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        fetched_data_view = findViewById(R.id.show_fetched_data);
+                        try {
+                            json_data = new JSONObject(response);
+                            JSONArray data = json_data.getJSONArray("stationBeanList");
+                            fetched_data_view.setText(json_data.optJSONArray("stationBeanList").getJSONObject(0).optString("stationName"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        fetched_data_view = findViewById(R.id.show_fetched_data);
+                        fetched_data_view.setText("Data : "+error.getMessage());
+                    }
+                });
+                queue.add(stringrequest);
             }
         });
 
